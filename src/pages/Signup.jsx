@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Auth.css';
 import './Pages.css';
 
@@ -16,6 +17,7 @@ function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,10 +72,9 @@ function Signup() {
         joinDate: new Date().toLocaleDateString()
       };
 
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('isLoggedIn', 'true');
+      login(user); // Use AuthContext login
       setLoading(false);
-      navigate('/profile');
+      navigate('/dashboard');
     }, 600);
   };
 

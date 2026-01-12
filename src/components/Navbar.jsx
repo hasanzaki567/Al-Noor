@@ -1,13 +1,20 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import './Navbar.css';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Don't show navbar for logged in users (they'll use sidebar)
+  if (isLoggedIn) {
+    return null;
+  }
 
   return (
     <nav className="navbar">
@@ -29,33 +36,13 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/courses" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Courses
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/scheduler" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Scheduler
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/quran" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Quran
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/dashboard" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Dashboard
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/about" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
               About Us
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/contact" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Contact & Help
+              Contact
             </NavLink>
           </li>
         </ul>

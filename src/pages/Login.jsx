@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Auth.css';
 import './Pages.css';
 
@@ -9,6 +10,7 @@ function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,10 +44,9 @@ function Login() {
         name: formData.email.split('@')[0]
       };
       
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('isLoggedIn', 'true');
+      login(user); // Use AuthContext login
       setLoading(false);
-      navigate('/profile');
+      navigate('/dashboard');
     }, 600);
   };
 

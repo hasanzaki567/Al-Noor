@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import Navbar from "./components/Navbar"
+import Sidebar from "./components/Sidebar"
 import Footer from "./components/Footer"
+import ProtectedRoute from "./components/ProtectedRoute"
 import Home from "./pages/Home"
 import Courses from "./pages/Courses"
 import Scheduler from "./pages/Scheduler"
@@ -15,22 +18,47 @@ import "./App.css"
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/scheduler" element={<Scheduler />} />
-        <Route path="/quran" element={<Quran />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          
+          {/* Protected Routes */}
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
+          <Route path="/courses" element={
+            <ProtectedRoute>
+              <Courses />
+            </ProtectedRoute>
+          } />
+          <Route path="/scheduler" element={
+            <ProtectedRoute>
+              <Scheduler />
+            </ProtectedRoute>
+          } />
+          <Route path="/quran" element={
+            <ProtectedRoute>
+              <Quran />
+            </ProtectedRoute>
+          } />
+        </Routes>
+        <Footer />
+      </Router>
+    </AuthProvider>
   )
 }
 
