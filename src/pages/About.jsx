@@ -3,10 +3,16 @@ import './Pages.css';
 function About() {
   return (
     <div className="page-container">
-      <div className="page-header">
-        <h1>About Al Noor Academy</h1>
-        <p>Bridging Islamic Knowledge and Modern Education</p>
-      </div>
+      <header className="page-header premium-header">
+        <div className="header-icon" aria-hidden="true">🏫</div>
+        <h1>About Us</h1>
+        <p>Learn more about Al Noor Academy’s mission and team</p>
+        <div className="header-wave">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#23272F"/>
+          </svg>
+        </div>
+      </header>
 
       <div className="page-content">
         <div className="about-section">

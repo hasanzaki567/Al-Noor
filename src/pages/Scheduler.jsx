@@ -48,10 +48,16 @@ function Scheduler() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
+      <header className="page-header premium-header">
+        <div className="header-icon" aria-hidden="true">📅</div>
         <h1>Class Schedule</h1>
-        <p>View our weekly class schedule and timings</p>
-      </div>
+        <p>View and manage your weekly class schedule</p>
+        <div className="header-wave">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#23272F"/>
+          </svg>
+        </div>
+      </header>
 
       <div className="page-content">
         <div className="schedule-grid">

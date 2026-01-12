@@ -58,11 +58,17 @@ function Footer() {
             </div>
           </div>
         </div>
-
-        <div className="footer-bottom">
-          <p>&copy; {currentYear} Al Noor Academy. All rights reserved.</p>
-          <p>Dedicated to Islamic Education and Knowledge</p>
-        </div>
+      </div>
+      <div className="footer-bottom">
+        <button className="back-to-top" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} aria-label="Back to top">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="14" fill="#1A9B8E"/>
+            <path d="M14 20V8M14 8L8 14M14 8l6 6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <p className="footer-copyright">
+          &copy; {currentYear} Al Noor Academy. All rights reserved.
+        </p>
       </div>
     </footer>
   );

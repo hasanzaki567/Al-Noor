@@ -45,10 +45,16 @@ function Contact() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
+      <header className="page-header premium-header">
+        <div className="header-icon" aria-hidden="true">✉️</div>
         <h1>Contact Us & Help</h1>
-        <p>Get in touch with us for any questions or support</p>
-      </div>
+        <p>Get in touch with us for support and questions</p>
+        <div className="header-wave">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#23272F"/>
+          </svg>
+        </div>
+      </header>
 
       <div className="page-content">
         <div className="contact-grid">
