@@ -14,6 +14,8 @@ import Contact from "./pages/Contact"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Profile from "./pages/Profile"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsOfService from "./pages/TermsOfService"
 import "./App.css"
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           
           {/* Protected Routes */}
           <Route path="/dashboard" element={

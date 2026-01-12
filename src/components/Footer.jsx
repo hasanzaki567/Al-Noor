@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const { isLoggedIn } = useAuth();
+
+  // Don't show footer for logged-in users
+  if (isLoggedIn) {
+    return null;
+  }
 
   return (
     <footer className="footer">
@@ -23,29 +30,26 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/courses">Courses</Link></li>
-              <li><Link to="/quran">Quran</Link></li>
               <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
           <div className="footer-section">
             <h4>Resources</h4>
             <ul>
-              <li><Link to="/scheduler">Schedule</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
               <li><a href="#">Blog</a></li>
               <li><a href="#">FAQ</a></li>
+              <li><a href="#">Learning Guide</a></li>
             </ul>
           </div>
 
           <div className="footer-section">
             <h4>Support</h4>
             <ul>
-              <li><Link to="/contact">Contact Us</Link></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><Link to="/contact">Help Center</Link></li>
+              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service">Terms of Service</Link></li>
             </ul>
           </div>
 
@@ -75,3 +79,4 @@ function Footer() {
 }
 
 export default Footer;
+
