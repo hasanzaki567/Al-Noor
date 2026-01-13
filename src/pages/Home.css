@@ -289,7 +289,7 @@
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(15, 95, 92, 0.08),
               0 0 24px rgba(15, 95, 92, 0.05);
-  border: 1.5px solid rgba(26, 155, 142, 0.12);
+  border: 1px solid #38bdf8;
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -318,10 +318,16 @@
 }
 
 .feature-card:hover {
-  --card-translateY: -8px;
-  --card-scale: 1.03;
-  box-shadow: 0 8px 24px rgba(15, 95, 92, 0.12),
-              0 0 40px rgba(26, 155, 142, 0.08);
+  --card-translateY: -4px;
+  --card-scale: 1;
+  background: linear-gradient(to right, #0ea5e9, #22c55e);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card:hover h3,
+.feature-card:hover p {
+  color: #ffffff;
 }
 
 .feature-card:hover::before {
