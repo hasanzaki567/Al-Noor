@@ -1,6 +1,8 @@
 import './Pages.css';
+import usePageTitle from "../hooks/usePageTitle";
 
 function About() {
+  usePageTitle("About Us");
   return (
     <div className="page-container">
       <header className="page-header premium-header">

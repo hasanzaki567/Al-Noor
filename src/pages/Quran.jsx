@@ -1,6 +1,8 @@
 import './Pages.css';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Quran() {
+  usePageTitle("Quran");
   const surahs = [
     { id: 1, name: 'Al-Fatihah', number: 1, verses: 7, meaning: 'The Opening' },
     { id: 2, name: 'Al-Baqarah', number: 2, verses: 286, meaning: 'The Cow' },

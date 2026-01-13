@@ -1,7 +1,9 @@
 import './Pages.css';
 import { useState } from 'react';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Dashboard() {
+  usePageTitle("Dashboard");
   // Demo user data
   const user = {
     name: 'Ayaan',

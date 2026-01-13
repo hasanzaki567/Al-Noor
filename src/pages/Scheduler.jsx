@@ -1,6 +1,8 @@
 import './Pages.css';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Scheduler() {
+  usePageTitle("Scheduler");
   const schedule = [
     {
       id: 1,

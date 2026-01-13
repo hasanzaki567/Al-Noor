@@ -1,7 +1,9 @@
 import './Pages.css';
 import { useState } from 'react';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Contact() {
+  usePageTitle("Contact Us");
   const [formData, setFormData] = useState({
     name: '',
     email: '',

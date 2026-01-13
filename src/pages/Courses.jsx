@@ -1,7 +1,9 @@
 import './Pages.css';
 import { useState } from 'react';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Courses() {
+  usePageTitle("Courses");
   const coursesList = [
     {
       id: 1,

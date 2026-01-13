@@ -1,7 +1,9 @@
 import './Home.css';
 import { useEffect, useRef, useState } from 'react';
+import usePageTitle from "../hooks/usePageTitle";
 
 function Home() {
+  usePageTitle("Home");
   const featuresRef = useRef(null);
   const trustRef = useRef(null);
   const testimonialRef = useRef(null);

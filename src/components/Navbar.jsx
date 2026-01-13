@@ -13,9 +13,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          {/* Use an image logo for retina if available, fallback to emoji */}
-          {/* <img src="/logo192.png" alt="Al Noor Academy Logo" /> */}
-          🕌 Al Noor Academy
+           <img className="nav-logo-img" src="/public/Al-noor-filled-no-bg-.webp" alt="Al Noor Academy Logo" />
         </Link>
         
         <div className="menu-icon" onClick={toggleMenu}>
