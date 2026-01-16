@@ -266,7 +266,7 @@
 
 .hadith-wrapper {
   width: 100%;
-  padding: 5px 20px 100px 20px;
+  padding: 5px 20px 50px 20px;
   display: flex;
   justify-content: center;
   background-color: #ffffff;
@@ -320,3 +320,671 @@
 }
 
 
+
+/* tlwHeroSection.css */
+
+/* tlwHeroSection.css */
+
+.tlwHero__wrapper {
+  width: 100%;
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.tlwHero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+
+  /* NEW BOX STYLE */
+  border: 1px solid rgba(0, 0, 0, 0.08); /* very light black border */
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+/* Left Content */
+.tlwHero__content {
+  flex: 1;
+}
+
+.tlwHero__title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.tlwHero__description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #6b7280;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.tlwHero__button {
+  padding: 14px 28px;
+  background-color: #0f766e;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Right Images */
+.tlwHero__images {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.tlwHero__imageLarge img {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.tlwHero__imageStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tlwHero__imageStack img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .tlwHero__container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .tlwHero__images {
+    justify-content: center;
+  }
+}
+
+
+/* =======================
+   Entrance Animations
+======================= */
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delays */
+.delay-1 { animation: fadeUp 0.7s ease-out forwards; }
+.delay-2 { animation: fadeUp 0.85s ease-out forwards; }
+.delay-3 { animation: fadeUp 1s ease-out forwards; }
+
+
+
+
+
+/* tilawah  SECTION */
+.info-section {
+   background: #faf7f4;
+  padding: 40px 60px;
+  width: 100%;
+}
+
+/* LAYOUT */
+.info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* LEFT */
+.info-left {
+  flex: 1;
+}
+
+.info-left h2 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111111;
+  margin-bottom: 20px;
+}
+
+.info-left p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555555;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+/* BUTTON (same color, hover only adds movement) */
+.info-btn {
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.info-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* RIGHT */
+.info-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* CARDS (same colors as pic) */
+.tilawah-card {
+  padding: 24px;
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tilawah-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.tilawah-card p {
+  font-size: 14px;
+  color: #555555;
+}
+
+/* CARD COLORS */
+.f98 {
+   background-color: #7465d3c0 !important;
+}
+
+.f50000 {
+  background-color: #dbbce5 !important;
+}
+
+.f5plusYears {
+  background-color: #ddc595 !important;
+}
+
+.tilawah-card.wide {
+  grid-column: span 2;
+}
+
+/* CARD HOVER (NO COLOR CHANGE) */
+.tilawah-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* pricing section */
+
+
+.pricing-section {
+  padding: 90px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.pricing-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #1f1f1f;
+}
+
+.pricing-header p {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* GRID */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* CARD OUTER */
+.price-card {
+  padding: 24px;
+  border-radius: 20px;
+  text-align: left;
+  transition: all 0.35s ease;
+}
+
+/* OUTER COLORS */
+.price-card.beginner {
+  background: linear-gradient(180deg, #efd2eb, #f5e8fb);
+}
+
+.price-card.intermediate {
+  background: linear-gradient(180deg, #fde2be, #fff1d8);
+}
+
+.price-card.advanced {
+  background: linear-gradient(180deg, #e2d8ff, #f2edff);
+}
+
+.price-card.daily {
+  background: linear-gradient(180deg, #d8f0e8, #ecfaf5);
+}
+
+/* TITLE */
+.price-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+/* INNER LAYER */
+.price-inner {
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+/* PRICE */
+.rupya {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #000;
+}
+
+.rupya span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #444;
+}
+
+/* LIST */
+.price-inner ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.price-inner ul li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+  color: #333;
+}
+
+.price-inner ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #5a2c83;
+  font-weight: bold;
+}
+
+/* BUTTON */
+.price-inner button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #2b1b3f;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.price-inner button:hover {
+  background: #1e102f;
+}
+
+/* HOVER EFFECT (SUBTLE & PREMIUM) */
+.price-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+/* QuranJourneySteps.css */
+
+.journey-section {
+  padding: 80px 20px;
+  background: #faf7f4;
+  text-align: center;
+}
+
+.journey-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: #1f1f1f;
+}
+
+.journey-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.journey-card {
+  background: #ffffff;
+  width: 320px;
+  padding: 35px 25px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.journey-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+.icon-wrapper {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.journey-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.journey-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.journey-btn {
+  background: #2c2c2c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.journey-btn:hover {
+  background: #000000;
+}
+
+
+/* QuranCTA.css */
+
+.cta-section {
+  padding: 100px 20px;
+  background: #fff;
+}
+
+/* MAIN BOX */
+.cta-box {
+  max-width: 1200px;
+  margin: auto;
+  min-height: 380px;
+
+  /* YOU will put image here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 26px;
+  padding: 70px 80px;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay for readability */
+.cta-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+/* TEXT AREA */
+.cta-text {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  color: #ffffff;
+}
+
+/* Badge */
+.cta-badge {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  margin-bottom: 22px;
+}
+
+/* Heading */
+.cta-text h2 {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+/* Description */
+.cta-text p {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.95;
+  margin-bottom: 35px;
+}
+
+/* Buttons */
+.cta-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.primary-btn {
+  background: #ffffff;
+  color: #111111;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .cta-box {
+    padding: 50px 35px;
+  }
+
+  .cta-text h2 {
+    font-size: 34px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    width: fit-content;
+  }
+}
+
+/* QuranArticles.css */
+
+.articles-section {
+  padding: 90px 20px;
+  background: #faf7f4;
+}
+
+.articles-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: #1f1f1f;
+}
+
+.articles-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.article-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.15);
+}
+
+.article-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 25px;
+}
+
+.article-content h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #222;
+  line-height: 1.4;
+}
+
+.article-content p {
+  font-size: 14.5px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.read-btn {
+  background: #2c1f2e;
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.read-btn:hover {
+  background: #000000;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card img {
+    height: 200px;
+  }
+}

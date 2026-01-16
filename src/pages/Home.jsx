@@ -3,6 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import usePageTitle from "../hooks/usePageTitle";
 import './QuranLearning.css';
 import childImage from '../assets/Screenshot__70_-removebg-preview.png';
+import verticalUs from "../assets/verticalUs.png";
+import sheikhZaid from "../assets/sheikhzaid.png";
+import image2 from "../assets/image2.jpg";
+import { FaRegEdit, FaClock, FaBookOpen } from "react-icons/fa";
+import boy from "../assets/boy.jpg";
+import sahada from "../assets/sahada.png";
+import mosqueboy from "../assets/mosqueboy.jpg";
+import mosqueboy2 from "../assets/mosqueboy2.jpg";
+
 
 function Home() {
   usePageTitle("Home");
@@ -372,6 +381,8 @@ function Home() {
           </div>
         </div>
       </div>
+
+      {/* hadith section */}
       <section className="hadith-wrapper">
         <div className="hadith-box">
           <p className="hadith-text">
@@ -381,9 +392,290 @@ function Home() {
 
           <span className="hadith-source">(Sahih Muslim)</span>
         </div>
-        {/* Hadith Section */}
+      </section>
+      
+
+      {/* TLW Hero Section */}
+
+      <section className="tlwHero__wrapper">
+        <div className="tlwHero__container">
+
+          {/* Left Content */}
+          <div className="tlwHero__content">
+            <h1 className="tlwHero__title">
+              Dedicated to Teaching <br /> the Words of Allah
+            </h1>
+
+            <p className="tlwHero__description">
+              Learn the Holy Quran with expert teachers using authentic
+              methods of Tajweed and Tilawah. Join thousands of students
+              learning online from anywhere in the world.
+            </p>
+
+            <button className="tlwHero__button">
+              Get Started
+            </button>
+          </div>
+
+          {/* Right Images */}
+          <div className="tlwHero__images">
+            <div className="tlwHero__imageLarge">
+              <img src={verticalUs} alt="Quran Teaching" />
+            </div>
+
+            <div className="tlwHero__imageStack">
+              <img src={sheikhZaid} alt="Online Quran Class" />
+              <img src={image2} alt="Quran Recitation" />
+            </div>
+          </div>
+
+        </div>
       </section>
 
+      {/* tilawah section */}
+
+      <section className="info-section">
+        <div className="info-container">
+          <div className="info-left">
+            <h2>
+              Learn Quran the Right Way
+              <br />
+              with Tilawah Quran
+            </h2>
+
+            <p>
+              With a focus on Tajweed, proper pronunciation, and Quran recitation,
+              our experienced teachers will guide you at your own pace. Experience
+              personalized, one-on-one online Quran lessons that help you learn to
+              recite beautifully and accurately.
+            </p>
+
+            <button className="info-btn">Get Started</button>
+          </div>
+
+          <div className="info-right">
+            <div className="tilawah-card f98">
+              <h3>98%</h3>
+              <p>Student Satisfaction Rate</p>
+            </div>
+
+            <div className="tilawah-card f50000">
+              <h3>50,000+</h3>
+              <p>Students Taught</p>
+            </div>
+
+            <div className="tilawah-card f5plusYears wide">
+              <h3>5+ Years</h3>
+              <p>
+                Qualified & Experienced Instructors of Excellence in Online Quran
+                Education
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* pricing section */}
+
+      <section className="pricing-section">
+        <div className="pricing-header">
+          <h2>Your Quran Journey<br />Starts here</h2>
+        </div>
+
+        <div className="pricing-grid">
+          {/* Beginner */}
+          <div className="price-card beginner">
+            <h4>Beginner Basic</h4>
+            <h3 className="rupya">$30 <span>/month</span></h3>
+            <div className="price-inner">
+
+              <ul>
+                <li>2 Classes Per Week</li>
+                <li>Personalized 1-on-1 Sessions</li>
+                <li>Learn Quran Reading Basics</li>
+                <li>Intro to Tajweed Rules</li>
+                <li>Progress Tracking</li>
+              </ul>
+              <button>Enroll Now</button>
+            </div>
+          </div>
+
+          {/* Intermediate */}
+          <div className="price-card intermediate">
+            <h4>Intermediate Pro</h4>
+            <h3 className='rupya'>$45 <span>/month</span></h3>
+            <div className="price-inner">
+
+              <ul>
+                <li>3 Classes Per Week</li>
+                <li>Experienced Quran Instructors</li>
+                <li>In-depth Tajweed Lessons</li>
+                <li>Tajweed Practice & Recitation</li>
+                <li>Continuous Progress Monitoring</li>
+              </ul>
+              <button>Enroll Now</button>
+            </div>
+          </div>
+
+          {/* Tajweed */}
+          <div className="price-card advanced">
+            <h4>Tajweed Master</h4>
+            <h3 className="rupya">$60 <span>/month</span></h3>
+            <div className="price-inner">
+
+              <ul>
+                <li>4 Classes Per Week</li>
+                <li>Advanced Tajweed Techniques</li>
+                <li>Correction in Recitation</li>
+                <li>Focused Memorization Guidance</li>
+                <li>Weekly Practice & Revisions</li>
+              </ul>
+              <button>Enroll Now</button>
+            </div>
+          </div>
+
+          {/* Daily */}
+          <div className="price-card daily">
+            <h4>Daily Class</h4>
+            <h3 className="rupya">$75 <span>/month</span></h3>
+            <div className="price-inner">
+
+              <ul>
+                <li>Daily Quran Classes</li>
+                <li>Dedicated Personal Instructor</li>
+                <li>Advanced Tajweed & Fluency</li>
+                <li>Regular Revision & Assessment</li>
+                <li>Complete Learning Guidance</li>
+              </ul>
+              <button>Enroll Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 Steps Section */}
+      <section className="journey-section">
+        <h2 className="journey-title">
+          Start Your Quran Journey in 3 Easy Steps
+        </h2>
+
+        <div className="journey-cards">
+          {/* Step 1 */}
+          <div className="journey-card">
+            <div className="icon-wrapper">
+              <FaRegEdit />
+            </div>
+            <h3>Fill The Contact Form</h3>
+            <p>
+              Let us know your learning goals and preferred schedule by filling
+              out our simple contact form.
+            </p>
+            <button className="journey-btn">Enroll Now</button>
+          </div>
+
+          {/* Step 2 */}
+          <div className="journey-card">
+            <div className="icon-wrapper">
+              <FaClock />
+            </div>
+            <h3>Pick a Time for Free Trial</h3>
+            <p>
+              Choose a convenient time for your free trial class and get matched
+              with a qualified Quran instructor.
+            </p>
+            <button className="journey-btn">Enroll Now</button>
+          </div>
+
+          {/* Step 3 */}
+          <div className="journey-card">
+            <div className="icon-wrapper">
+              <FaBookOpen />
+            </div>
+            <h3>Begin with the Quran Today</h3>
+            <p>
+              Start your Quran learning journey with expert instructors and
+              structured lessons from day one.
+            </p>
+            <button className="journey-btn">Enroll Now</button>
+          </div>
+        </div>
+      </section>
+
+
+      {/* big card cta section */}
+      <section className="cta-section">
+        <div className="cta-box" style={{ backgroundImage: `url(${boy})` }} ref={ctaRef}>
+          <div className="cta-text">
+            <span className="cta-badge">ONLINE QURAN CLASSES</span>
+
+            <h2>
+              Learn Quran Online <br />
+              With Qualified Teachers
+            </h2>
+
+            <p>
+              Start your Quran learning journey with experienced tutors,
+              flexible schedules, and a structured curriculum designed for
+              children and adults.
+            </p>
+
+            <div className="cta-actions">
+              <button className="primary-btn">Book Free Trial</button>
+              <button className="secondary-btn">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Articles Section */}
+       <section className="articles-section">
+      <h2 className="articles-title">
+         Guidance and Reflections
+      </h2>
+
+      <div className="articles-grid">
+        {/* Card 1 */}
+        <div className="article-card">
+          <img src={sahada} alt="Shahadah" />
+          <div className="article-content">
+            <h3>First Pillar of Islam: Shahadah</h3>
+            <p>
+              Explore the importance of the Shahadah, its meaning, and
+              its significance in the life of every Muslim.
+            </p>
+            <button className="read-btn">Read More</button>
+          </div>
+        </div>
+
+        {/* Card 2 */}
+        <div className="article-card">
+          <img src={mosqueboy} alt="Learning Quran" />
+          <div className="article-content">
+            <h3>Best Age to Start Learning Quran</h3>
+            <p>
+              Discover the convenient time for your child to begin
+              Quran learning with effective guidance.
+            </p>
+            <button className="read-btn">Read More</button>
+          </div>
+        </div>
+
+        {/* Card 3 */}
+        <div className="article-card">
+          <img src={mosqueboy2} alt="Norani Qaida" />
+          <div className="article-content">
+            <h3>How to Teach Norani Qaida</h3>
+            <p>
+              Learn simple teaching methods to help children read the
+              Quran fluently and with confidence.
+            </p>
+            <button className="read-btn">Read More</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
       {/* Simple Slider */}
       <div className="hero-section">
