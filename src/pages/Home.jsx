@@ -1,6 +1,8 @@
 import './Home.css';
 import { useEffect, useRef, useState } from 'react';
 import usePageTitle from "../hooks/usePageTitle";
+import './QuranLearning.css';
+import childImage from '../assets/Screenshot__70_-removebg-preview.png';
 
 function Home() {
   usePageTitle("Home");
@@ -20,7 +22,7 @@ function Home() {
       let current = 0;
       const increment = Math.ceil(target / 60); // Animate over ~1 second (60 frames)
       const counterElement = element.querySelector('.counter-value');
-      
+
       if (!counterElement) return;
 
       const interval = setInterval(() => {
@@ -163,9 +165,9 @@ function Home() {
       id: 1,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="28" height="20" rx="4" fill="#1A9B8E"/>
-          <rect x="8" y="12" width="20" height="12" rx="2" fill="#F5F0E2"/>
-          <rect x="12" y="16" width="12" height="4" rx="1" fill="#C9A961"/>
+          <rect x="4" y="8" width="28" height="20" rx="4" fill="#1A9B8E" />
+          <rect x="8" y="12" width="20" height="12" rx="2" fill="#F5F0E2" />
+          <rect x="12" y="16" width="12" height="4" rx="1" fill="#C9A961" />
         </svg>
       ),
       title: 'Comprehensive Courses',
@@ -175,9 +177,9 @@ function Home() {
       id: 2,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#1A9B8E"/>
-          <rect x="10" y="22" width="16" height="4" rx="2" fill="#F5F0E2"/>
-          <rect x="14" y="10" width="8" height="8" rx="4" fill="#C9A961"/>
+          <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
+          <rect x="10" y="22" width="16" height="4" rx="2" fill="#F5F0E2" />
+          <rect x="14" y="10" width="8" height="8" rx="4" fill="#C9A961" />
         </svg>
       ),
       title: 'Live Classes',
@@ -187,9 +189,9 @@ function Home() {
       id: 3,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="24" height="16" rx="4" fill="#1A9B8E"/>
-          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2"/>
-          <circle cx="18" cy="18" r="2" fill="#C9A961"/>
+          <rect x="6" y="10" width="24" height="16" rx="4" fill="#1A9B8E" />
+          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
+          <circle cx="18" cy="18" r="2" fill="#C9A961" />
         </svg>
       ),
       title: 'Flexible Schedule',
@@ -199,8 +201,8 @@ function Home() {
       id: 4,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#C9A961"/>
-          <path d="M18 10L21.09 15.26L27 16.27L22.5 20.14L23.82 26.02L18 23.27L12.18 26.02L13.5 20.14L9 16.27L14.91 15.26L18 10Z" fill="#fff"/>
+          <circle cx="18" cy="18" r="16" fill="#C9A961" />
+          <path d="M18 10L21.09 15.26L27 16.27L22.5 20.14L23.82 26.02L18 23.27L12.18 26.02L13.5 20.14L9 16.27L14.91 15.26L18 10Z" fill="#fff" />
         </svg>
       ),
       title: 'Certificates',
@@ -210,9 +212,9 @@ function Home() {
       id: 5,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="12" width="20" height="12" rx="4" fill="#1A9B8E"/>
-          <rect x="12" y="16" width="12" height="4" rx="2" fill="#F5F0E2"/>
-          <circle cx="18" cy="18" r="2" fill="#C9A961"/>
+          <rect x="8" y="12" width="20" height="12" rx="4" fill="#1A9B8E" />
+          <rect x="12" y="16" width="12" height="4" rx="2" fill="#F5F0E2" />
+          <circle cx="18" cy="18" r="2" fill="#C9A961" />
         </svg>
       ),
       title: '24/7 Support',
@@ -222,9 +224,9 @@ function Home() {
       id: 6,
       icon: (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#1A9B8E"/>
-          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2"/>
-          <rect x="14" y="18" width="8" height="4" rx="2" fill="#C9A961"/>
+          <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
+          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
+          <rect x="14" y="18" width="8" height="4" rx="2" fill="#C9A961" />
         </svg>
       ),
       title: 'Community',
@@ -324,11 +326,70 @@ function Home() {
 
   return (
     <div className="home">
+      {/* // Quran Learning Section */}
+      <div className='header'>
+        QURAN LEARNING
+      </div>
+      <div className="quran-section">
+        <div className="content-wrapper">
+          {/* Main content div */}
+          <div className="content-box">
+            <div className="left-content">
+
+              <div className="description">
+                <p>
+                  Master Quran reading and recitation with structured online lessons taught
+                  by certified instructors. Whether for kids or adults, our easy learning path
+                  makes studying the Quran simple, flexible, and effective.
+                </p>
+
+                <div className="cta-buttons">
+                  <button className="btn-primary">Register Now</button>
+                  <button className="btn-secondary">Get Free Trial</button>
+                </div>
+              </div>
+            </div>
+
+            {/* Child image on the right */}
+            <div className="right-content">
+              <img
+                src={childImage}
+                alt="Child learning Quran"
+                className="child-image"
+              />
+            </div>
+
+            {/* Course tags at bottom right */}
+            <div className="course-tags">
+              <span className="tag tag-dark">Tajweed</span>
+              <span className="tag tag-light">Quran Reading</span>
+              <span className="tag tag-light">Tafseer</span>
+              <span className="tag tag-dark">Quran Recitation</span>
+              <span className="tag tag-light">Noorani Qaida</span>
+              <span className="tag tag-light">Arabic Basics</span>
+              <span className="tag tag-dark">Hifz (Memorization)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section className="hadith-wrapper">
+        <div className="hadith-box">
+          <p className="hadith-text">
+            “Recite the Quran, for on the Day of Resurrection it will come as an
+            intercessor for its reciters.”
+          </p>
+
+          <span className="hadith-source">(Sahih Muslim)</span>
+        </div>
+        {/* Hadith Section */}
+      </section>
+
+
       {/* Simple Slider */}
       <div className="hero-section">
         <div className="slides-container">
           {slides.map((slide, index) => (
-            <div key={slide.id} className="slide" style={{animationDelay: `${index * 7.5}s`}}>
+            <div key={slide.id} className="slide" style={{ animationDelay: `${index * 7.5}s` }}>
               <img src={slide.image} alt={slide.title} className="slide-image" />
               <div className="slide-content">
                 <div className="slide-glass">
@@ -355,7 +416,7 @@ function Home() {
         <div className="container">
           <h2 className="section-title">Why Al Noor Academy?</h2>
           <p className="section-subtitle">Everything you need to grow spiritually and intellectually</p>
-          
+
           <div className="features-grid">
             {features.map((feature) => (
               <div key={feature.id} className="feature-card">
@@ -370,7 +431,7 @@ function Home() {
 
       <div className="section-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z" fill="#F5F0E2"/>
+          <path d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z" fill="#F5F0E2" />
         </svg>
       </div>
 
@@ -380,8 +441,8 @@ function Home() {
           <h2 className="trust-title">Why Trust Al Noor Academy?</h2>
           <div className="trust-grid">
             {trustBadges.map((badge) => (
-              <div 
-                key={badge.id} 
+              <div
+                key={badge.id}
                 className="trust-badge"
                 data-counter={badge.counter}
                 data-target={badge.target}
@@ -399,7 +460,7 @@ function Home() {
 
       <div className="section-divider section-divider--small" aria-hidden="true">
         <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#F5F0E2"/>
+          <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#F5F0E2" />
         </svg>
       </div>
 
@@ -410,10 +471,10 @@ function Home() {
         <div className="container">
           <h2 className="section-title">Student Success Stories</h2>
           <p className="section-subtitle">Join thousands of satisfied learners from around the world</p>
-          
+
           <div className="testimonials-grid">
             {testimonials.map((testimonial, idx) => (
-              <div key={testimonial.id} className="testimonial-card" style={{animationDelay: `${idx * 0.15}s`}}>
+              <div key={testimonial.id} className="testimonial-card" style={{ animationDelay: `${idx * 0.15}s` }}>
                 <div className="testimonial-header">
                   <img src={testimonial.image} alt={testimonial.name} className="testimonial-avatar" />
                   <div className="testimonial-info">
@@ -441,11 +502,11 @@ function Home() {
         <div className="container">
           <h2 className="section-title">Frequently Asked Questions</h2>
           <p className="section-subtitle">Find answers to common questions about enrollment and our courses</p>
-          
+
           <div className="faq-container">
             {faqs.map((faq) => (
               <div key={faq.id} className="faq-item">
-                <button 
+                <button
                   className={`faq-question ${activeFaq === faq.id ? 'active' : ''}`}
                   onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}
                   aria-expanded={activeFaq === faq.id}
@@ -453,8 +514,8 @@ function Home() {
                 >
                   <span className="faq-icon-svg" aria-hidden="true">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="11" cy="11" r="11" fill="#1A9B8E"/>
-                      <path d="M11 6v10M6 11h10" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
+                      <circle cx="11" cy="11" r="11" fill="#1A9B8E" />
+                      <path d="M11 6v10M6 11h10" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                   </span>
                   <span className="faq-title">{faq.question}</span>
