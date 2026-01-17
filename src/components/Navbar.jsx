@@ -13,7 +13,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-           <img className="nav-logo-img" src="/public/Al-noor-filled-no-bg-.webp" alt="Al Noor Academy Logo" />
+           <img className="nav-logo-img" src="./public/Al-noor-filled-no-bg-.webp" alt="Al Noor Academy Logo" />
         </Link>
         
         <div className="menu-icon" onClick={toggleMenu}>
