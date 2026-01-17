@@ -148,190 +148,190 @@ function Home() {
       }
     };
   }, []);
-  const slides = [
-    {
-      id: 1,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
-      title: 'Master Islamic Knowledge',
-      description: 'Learn authentic teachings with certified instructors'
-    },
-    {
-      id: 2,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f70259471?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
-      title: 'Transform Your Quranic Journey',
-      description: 'Study Quran with proven methods that stick'
-    },
-    {
-      id: 3,
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
-      title: 'Learn from Expert Scholars',
-      description: 'Get guidance from experienced Islamic educators'
-    }
-  ];
+  // const slides = [
+  //   {
+  //     id: 1,
+  //     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
+  //     title: 'Master Islamic Knowledge',
+  //     description: 'Learn authentic teachings with certified instructors'
+  //   },
+  //   {
+  //     id: 2,
+  //     image: 'https://images.unsplash.com/photo-1516321318423-f06f70259471?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
+  //     title: 'Transform Your Quranic Journey',
+  //     description: 'Study Quran with proven methods that stick'
+  //   },
+  //   {
+  //     id: 3,
+  //     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=500',
+  //     title: 'Learn from Expert Scholars',
+  //     description: 'Get guidance from experienced Islamic educators'
+  //   }
+  // ];
 
-  const features = [
-    {
-      id: 1,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="28" height="20" rx="4" fill="#1A9B8E" />
-          <rect x="8" y="12" width="20" height="12" rx="2" fill="#F5F0E2" />
-          <rect x="12" y="16" width="12" height="4" rx="1" fill="#C9A961" />
-        </svg>
-      ),
-      title: 'Comprehensive Courses',
-      description: 'In-depth courses covering Islamic studies, Quran, and Hadith'
-    },
-    {
-      id: 2,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
-          <rect x="10" y="22" width="16" height="4" rx="2" fill="#F5F0E2" />
-          <rect x="14" y="10" width="8" height="8" rx="4" fill="#C9A961" />
-        </svg>
-      ),
-      title: 'Live Classes',
-      description: 'Interactive live sessions with qualified instructors'
-    },
-    {
-      id: 3,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="24" height="16" rx="4" fill="#1A9B8E" />
-          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
-          <circle cx="18" cy="18" r="2" fill="#C9A961" />
-        </svg>
-      ),
-      title: 'Flexible Schedule',
-      description: 'Learn at your own pace with flexible scheduling options'
-    },
-    {
-      id: 4,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#C9A961" />
-          <path d="M18 10L21.09 15.26L27 16.27L22.5 20.14L23.82 26.02L18 23.27L12.18 26.02L13.5 20.14L9 16.27L14.91 15.26L18 10Z" fill="#fff" />
-        </svg>
-      ),
-      title: 'Certificates',
-      description: 'Earn recognized certificates upon course completion'
-    },
-    {
-      id: 5,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="12" width="20" height="12" rx="4" fill="#1A9B8E" />
-          <rect x="12" y="16" width="12" height="4" rx="2" fill="#F5F0E2" />
-          <circle cx="18" cy="18" r="2" fill="#C9A961" />
-        </svg>
-      ),
-      title: '24/7 Support',
-      description: 'Round-the-clock support from our dedicated team'
-    },
-    {
-      id: 6,
-      icon: (
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
-          <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
-          <rect x="14" y="18" width="8" height="4" rx="2" fill="#C9A961" />
-        </svg>
-      ),
-      title: 'Community',
-      description: 'Connect with students and scholars worldwide'
-    }
-  ];
+  // const features = [
+  //   {
+  //     id: 1,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <rect x="4" y="8" width="28" height="20" rx="4" fill="#1A9B8E" />
+  //         <rect x="8" y="12" width="20" height="12" rx="2" fill="#F5F0E2" />
+  //         <rect x="12" y="16" width="12" height="4" rx="1" fill="#C9A961" />
+  //       </svg>
+  //     ),
+  //     title: 'Comprehensive Courses',
+  //     description: 'In-depth courses covering Islamic studies, Quran, and Hadith'
+  //   },
+  //   {
+  //     id: 2,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
+  //         <rect x="10" y="22" width="16" height="4" rx="2" fill="#F5F0E2" />
+  //         <rect x="14" y="10" width="8" height="8" rx="4" fill="#C9A961" />
+  //       </svg>
+  //     ),
+  //     title: 'Live Classes',
+  //     description: 'Interactive live sessions with qualified instructors'
+  //   },
+  //   {
+  //     id: 3,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <rect x="6" y="10" width="24" height="16" rx="4" fill="#1A9B8E" />
+  //         <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
+  //         <circle cx="18" cy="18" r="2" fill="#C9A961" />
+  //       </svg>
+  //     ),
+  //     title: 'Flexible Schedule',
+  //     description: 'Learn at your own pace with flexible scheduling options'
+  //   },
+  //   {
+  //     id: 4,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <circle cx="18" cy="18" r="16" fill="#C9A961" />
+  //         <path d="M18 10L21.09 15.26L27 16.27L22.5 20.14L23.82 26.02L18 23.27L12.18 26.02L13.5 20.14L9 16.27L14.91 15.26L18 10Z" fill="#fff" />
+  //       </svg>
+  //     ),
+  //     title: 'Certificates',
+  //     description: 'Earn recognized certificates upon course completion'
+  //   },
+  //   {
+  //     id: 5,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <rect x="8" y="12" width="20" height="12" rx="4" fill="#1A9B8E" />
+  //         <rect x="12" y="16" width="12" height="4" rx="2" fill="#F5F0E2" />
+  //         <circle cx="18" cy="18" r="2" fill="#C9A961" />
+  //       </svg>
+  //     ),
+  //     title: '24/7 Support',
+  //     description: 'Round-the-clock support from our dedicated team'
+  //   },
+  //   {
+  //     id: 6,
+  //     icon: (
+  //       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //         <circle cx="18" cy="18" r="16" fill="#1A9B8E" />
+  //         <rect x="10" y="14" width="16" height="8" rx="2" fill="#F5F0E2" />
+  //         <rect x="14" y="18" width="8" height="4" rx="2" fill="#C9A961" />
+  //       </svg>
+  //     ),
+  //     title: 'Community',
+  //     description: 'Connect with students and scholars worldwide'
+  //   }
+  // ];
 
-  const trustBadges = [
-    {
-      id: 1,
-      icon: '👥',
-      label: '50K+ Students',
-      description: 'Trusted by learners across 25+ countries',
-      counter: 'students',
-      target: 50000
-    },
-    {
-      id: 2,
-      icon: '�',
-      label: '150+ Courses',
-      description: 'Comprehensive Islamic education curriculum',
-      counter: 'courses',
-      target: 150
-    },
-    {
-      id: 3,
-      icon: '⏰',
-      label: '15+ Years',
-      description: 'Established leader in Islamic online education',
-      counter: 'years',
-      target: 15
-    },
-    {
-      id: 4,
-      icon: '⭐',
-      label: '4.9★ Rating',
-      description: 'Consistently rated excellent by students',
-      counter: 'rating',
-      target: 49
-    }
-  ];
+  // const trustBadges = [
+  //   {
+  //     id: 1,
+  //     icon: '👥',
+  //     label: '50K+ Students',
+  //     description: 'Trusted by learners across 25+ countries',
+  //     counter: 'students',
+  //     target: 50000
+  //   },
+  //   {
+  //     id: 2,
+  //     icon: '�',
+  //     label: '150+ Courses',
+  //     description: 'Comprehensive Islamic education curriculum',
+  //     counter: 'courses',
+  //     target: 150
+  //   },
+  //   {
+  //     id: 3,
+  //     icon: '⏰',
+  //     label: '15+ Years',
+  //     description: 'Established leader in Islamic online education',
+  //     counter: 'years',
+  //     target: 15
+  //   },
+  //   {
+  //     id: 4,
+  //     icon: '⭐',
+  //     label: '4.9★ Rating',
+  //     description: 'Consistently rated excellent by students',
+  //     counter: 'rating',
+  //     target: 49
+  //   }
+  // ];
 
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Fatima Al-Rashid',
-      role: 'Medical Student',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-      rating: 5,
-      quote: 'Al Noor Academy has transformed my understanding of Islamic principles. The instructors are knowledgeable and the community is incredibly supportive.'
-    },
-    {
-      id: 2,
-      name: 'Ahmed Hassan',
-      role: 'Software Engineer',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-      rating: 5,
-      quote: 'Finally found a platform where I can learn Quran at my own pace without compromising quality. Highly recommended!'
-    },
-    {
-      id: 3,
-      name: 'Zainab Mohamed',
-      role: 'Teacher',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
-      rating: 5,
-      quote: 'The structured courses and live sessions have helped me strengthen my Islamic knowledge. Worth every penny!'
-    }
-  ];
+  // const testimonials = [
+  //   {
+  //     id: 1,
+  //     name: 'Fatima Al-Rashid',
+  //     role: 'Medical Student',
+  //     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
+  //     rating: 5,
+  //     quote: 'Al Noor Academy has transformed my understanding of Islamic principles. The instructors are knowledgeable and the community is incredibly supportive.'
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Ahmed Hassan',
+  //     role: 'Software Engineer',
+  //     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
+  //     rating: 5,
+  //     quote: 'Finally found a platform where I can learn Quran at my own pace without compromising quality. Highly recommended!'
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Zainab Mohamed',
+  //     role: 'Teacher',
+  //     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400',
+  //     rating: 5,
+  //     quote: 'The structured courses and live sessions have helped me strengthen my Islamic knowledge. Worth every penny!'
+  //   }
+  // ];
 
-  const faqs = [
-    {
-      id: 1,
-      question: 'How do I enroll in a course?',
-      answer: 'Simply browse our courses, select the one you\'re interested in, and click "Enroll Now". You\'ll create an account and get instant access to course materials.'
-    },
-    {
-      id: 2,
-      question: 'Do you offer a free trial?',
-      answer: 'Yes! We offer a 7-day free trial for most courses. You can explore the course structure and lessons before committing to enrollment.'
-    },
-    {
-      id: 3,
-      question: 'What is the schedule for live classes?',
-      answer: 'Live classes are scheduled throughout the week at various times to accommodate different timezones. You can view the full schedule when you enroll.'
-    },
-    {
-      id: 4,
-      question: 'Will I receive a certificate?',
-      answer: 'Yes, upon successful completion of any course, you\'ll receive a digital certificate that you can share with others.'
-    },
-    {
-      id: 5,
-      question: 'Is there support if I have questions?',
-      answer: 'Absolutely! Our support team is available 24/7 via email and chat. You\'ll also have access to instructor office hours.'
-    }
-  ];
+  // const faqs = [
+  //   {
+  //     id: 1,
+  //     question: 'How do I enroll in a course?',
+  //     answer: 'Simply browse our courses, select the one you\'re interested in, and click "Enroll Now". You\'ll create an account and get instant access to course materials.'
+  //   },
+  //   {
+  //     id: 2,
+  //     question: 'Do you offer a free trial?',
+  //     answer: 'Yes! We offer a 7-day free trial for most courses. You can explore the course structure and lessons before committing to enrollment.'
+  //   },
+  //   {
+  //     id: 3,
+  //     question: 'What is the schedule for live classes?',
+  //     answer: 'Live classes are scheduled throughout the week at various times to accommodate different timezones. You can view the full schedule when you enroll.'
+  //   },
+  //   {
+  //     id: 4,
+  //     question: 'Will I receive a certificate?',
+  //     answer: 'Yes, upon successful completion of any course, you\'ll receive a digital certificate that you can share with others.'
+  //   },
+  //   {
+  //     id: 5,
+  //     question: 'Is there support if I have questions?',
+  //     answer: 'Absolutely! Our support team is available 24/7 via email and chat. You\'ll also have access to instructor office hours.'
+  //   }
+  // ];
 
   return (
     <div className="home">
@@ -677,7 +677,7 @@ function Home() {
       </div>
     </section>
 
-      {/* Simple Slider */}
+      {/* Simple Slider
       <div className="hero-section">
         <div className="slides-container">
           {slides.map((slide, index) => (
@@ -701,10 +701,10 @@ function Home() {
         <div className="scroll-indicator" aria-hidden="true">
           <span className="scroll-arrow"></span>
         </div>
-      </div>
+      </div> */}
 
       {/* Featured Features Section */}
-      <section className="features-section" ref={featuresRef}>
+      {/* <section className="features-section" ref={featuresRef}>
         <div className="container">
           <h2 className="section-title">Why Al Noor Academy?</h2>
           <p className="section-subtitle">Everything you need to grow spiritually and intellectually</p>
@@ -719,16 +719,16 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <div className="section-divider" aria-hidden="true">
+      {/* <div className="section-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z" fill="#F5F0E2" />
         </svg>
-      </div>
+      </div> */}
 
       {/* Trust & Social Proof Section */}
-      <section className="trust-section" ref={trustRef}>
+      {/* <section className="trust-section" ref={trustRef}>
         <div className="container">
           <h2 className="trust-title">Why Trust Al Noor Academy?</h2>
           <div className="trust-grid">
@@ -754,12 +754,12 @@ function Home() {
         <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#F5F0E2" />
         </svg>
-      </div>
+      </div> */}
 
-      <div className="section-divider" aria-hidden="true"></div>
+      {/* <div className="section-divider" aria-hidden="true"></div> */}
 
       {/* Testimonials Section */}
-      <section className="testimonials-section" ref={testimonialRef}>
+      {/* <section className="testimonials-section" ref={testimonialRef}>
         <div className="container">
           <h2 className="section-title">Student Success Stories</h2>
           <p className="section-subtitle">Join thousands of satisfied learners from around the world</p>
@@ -785,12 +785,12 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <div className="section-divider section-divider--small" aria-hidden="true"></div>
+      {/* <div className="section-divider section-divider--small" aria-hidden="true"></div> */}
 
       {/* FAQ Section */}
-      <section className="faq-section" ref={faqRef}>
+      {/* <section className="faq-section" ref={faqRef}>
         <div className="container">
           <h2 className="section-title">Frequently Asked Questions</h2>
           <p className="section-subtitle">Find answers to common questions about enrollment and our courses</p>
@@ -824,7 +824,7 @@ function Home() {
         </div>
       </section>
 
-      <div className="section-divider section-divider--small" aria-hidden="true"></div>
+      <div className="section-divider section-divider--small" aria-hidden="true"></div> */}
 
       {/* CTA Section */}
       <section className="cta-section" ref={ctaRef}>
