@@ -8,14 +8,25 @@ function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-content">
-          <div className="footer-section">
-            <h3>Al Noor Academy</h3>
-            <p>Bridging Islamic Knowledge and Modern Education</p>
+          <div className="footer-section brand-section">
+            <div className="footer-brand">
+              <img src="./public/logoWeb.webp" alt="Al Noor Academy" className="footer-logo" />
+              <h3>Al Noor Academy</h3>
+            </div>
+            <p>Bridging Islamic Knowledge and Modern Education. Your journey to enlightenment starts here.</p>
             <div className="social-links">
-              <a href="#" className="social-icon" title="Facebook">f</a>
-              <a href="#" className="social-icon" title="Twitter">𝕏</a>
-              <a href="#" className="social-icon" title="Instagram">📷</a>
-              <a href="#" className="social-icon" title="YouTube">▶</a>
+              <a href="#" className="social-icon" aria-label="Facebook">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon" aria-label="Twitter">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" className="social-icon" aria-label="Instagram">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a href="#" className="social-icon" aria-label="YouTube">
+                <i className="fab fa-youtube"></i>
+              </a>
             </div>
           </div>
 
@@ -49,26 +60,28 @@ function Footer() {
             </ul>
           </div>
 
-          <div className="footer-section">
-            <h4>Newsletter</h4>
-            <p>Subscribe to our newsletter for updates</p>
+          <div className="footer-section newsletter-section">
+            <h4>Stay Updated</h4>
+            <p>Subscribe to our newsletter for the latest updates and courses.</p>
             <div className="newsletter">
-              <input type="email" placeholder="Enter your email" />
-              <button>Subscribe</button>
+              <input type="email" placeholder="Your email address" />
+              <button type="submit">
+                <i className="fas fa-paper-plane"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      
       <div className="footer-bottom">
-        <button className="back-to-top" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} aria-label="Back to top">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="14" cy="14" r="14" fill="#1A9B8E"/>
-            <path d="M14 20V8M14 8L8 14M14 8l6 6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-        <p className="footer-copyright">
-          &copy; {currentYear} Al Noor Academy. All rights reserved.
-        </p>
+        <div className="footer-bottom-content">
+          <p className="footer-copyright">
+            &copy; {currentYear} Al Noor Academy. All rights reserved.
+          </p>
+          <button className="back-to-top" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} aria-label="Back to top">
+            <i className="fas fa-arrow-up"></i>
+          </button>
+        </div>
       </div>
     </footer>
   );
