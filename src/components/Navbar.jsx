@@ -1,9 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import './Navbar.css';
+import ProfileDropdown from "./ProfileDropdown";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -13,9 +16,9 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-           <img className="nav-logo-img" src="./public/Al-noor-filled-no-bg-.webp" alt="Al Noor Academy Logo" />
+          <img className="nav-logo-img" src="./public/logoWeb.webp" alt="Al Noor Academy Logo" />
         </Link>
-        
+
         <div className="menu-icon" onClick={toggleMenu}>
           <i className={isOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
@@ -42,11 +45,6 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/dashboard" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
-              Dashboard
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/about" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')} onClick={() => setIsOpen(false)}>
               About Us
             </NavLink>
@@ -57,7 +55,22 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
+         <div className="nav-auth">
+          {isLoggedIn ? (
+            <ProfileDropdown />
+          ) : (
+            <div className="auth-buttons">
+              <Link to="/login" className="nav-login-btn">
+                Log in
+              </Link>
+              <Link to="/signup" className="nav-signup-btn">
+                Sign Up
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
+
     </nav>
   );
 }

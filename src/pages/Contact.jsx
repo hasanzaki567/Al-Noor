@@ -1,4 +1,4 @@
-import './Pages.css';
+import './Contact.css';
 import { useState } from 'react';
 import usePageTitle from "../hooks/usePageTitle";
 
@@ -10,6 +10,8 @@ function Contact() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,124 +23,167 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
+    }, 1000);
   };
 
-  const faqs = [
-    {
-      question: 'What are the prerequisites for courses?',
-      answer: 'Most courses are open to all levels. Check individual course descriptions for specific requirements.'
-    },
-    {
-      question: 'How can I get in touch with instructors?',
-      answer: 'You can contact instructors through the course forum or schedule office hours.'
-    },
-    {
-      question: 'Are certificates recognized?',
-      answer: 'Yes, our certificates are recognized in Islamic education circles worldwide.'
-    },
-    {
-      question: 'What is the refund policy?',
-      answer: 'We offer a 30-day money-back guarantee if you\'re not satisfied with the course.'
-    }
-  ];
-
   return (
-    <div className="page-container">
-      <header className="page-header premium-header">
-        <div className="header-icon" aria-hidden="true">✉️</div>
-        <h1>Contact Us & Help</h1>
-        <p>Get in touch with us for support and questions</p>
-        <div className="header-wave">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#23272F"/>
-          </svg>
+    <div className="contact-page">
+      {/* Hero Section */}
+      <div className="contact-hero">
+        <div className="contact-hero-content">
+          <h1>Contact Us</h1>
         </div>
-      </header>
-
-      <div className="page-content">
-        <div className="contact-grid">
-          <div className="contact-info">
-            <h2>Get In Touch</h2>
-            <div className="info-card">
-              <h3>Email</h3>
-              <p>info@alnooracademy.com</p>
-            </div>
-            <div className="info-card">
-              <h3>Phone</h3>
-              <p>+1 (555) 123-4567</p>
-            </div>
-            <div className="info-card">
-              <h3>Address</h3>
-              <p>123 Islamic Education Street<br/>Knowledge City, KC 12345</p>
-            </div>
-            <div className="info-card">
-              <h3>Office Hours</h3>
-              <p>Monday - Friday: 9:00 AM - 6:00 PM<br/>Saturday: 10:00 AM - 4:00 PM<br/>Sunday: Closed</p>
-            </div>
-          </div>
-
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <h2>Send us a Message</h2>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="submit-btn">Send Message</button>
-          </form>
+        <div className="hero-decoration">
+          <div className="mosque-silhouette"></div>
         </div>
+      </div>
 
-        <div className="faq-section">
-          <h2>Frequently Asked Questions</h2>
-          <div className="faq-list">
-            {faqs.map((faq, index) => (
-              <div key={index} className="faq-item">
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
+      {/* Main Content */}
+      <div className="contact-main">
+        <div className="contact-container">
+          <h2 className="section-heading">Let's Start a Conversation</h2>
+
+          <div className="contact-grid">
+            {/* Contact Form */}
+            <div className="contact-form-wrapper">
+              {submitted && (
+                <div className="success-message">
+                  <i className="fas fa-check-circle"></i>
+                  <span>Thank you! Your message has been sent successfully.</span>
+                </div>
+              )}
+
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name">
+                    Name <span className="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">
+                    Email <span className="required">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="em@gmail.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="subject">
+                    Subject <span className="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message">
+                    Message <span className="required">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="submit-btn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin"></i>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-paper-plane"></i>
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+
+            {/* Contact Info */}
+            <div className="contact-info">
+              <div className="info-item">
+                <h3>Address</h3>
+                <p>123 Islamic Education Street<br/>Knowledge City, KC 12345</p>
               </div>
-            ))}
+
+              <div className="info-item">
+                <h3>Email</h3>
+                <p>info@alnooracademy.com</p>
+              </div>
+
+              <div className="info-item">
+                <h3>Phone</h3>
+                <p>+1 (555) 123-4567</p>
+              </div>
+
+              <div className="info-item">
+                <h3>Office Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM<br/>
+                Saturday: 10:00 AM - 4:00 PM<br/>
+                Sunday: Closed</p>
+              </div>
+
+              <div className="social-links">
+                <a href="#" className="social-link" aria-label="Facebook">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social-link" aria-label="Twitter">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="#" className="social-link" aria-label="Instagram">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="#" className="social-link" aria-label="YouTube">
+                  <i className="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

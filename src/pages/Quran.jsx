@@ -18,11 +18,7 @@ function Quran() {
         <div className="header-icon" aria-hidden="true">🕋</div>
         <h1>Quran</h1>
         <p>Discover, recite, and reflect on the Quran</p>
-        <div className="header-wave">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#23272F"/>
-          </svg>
-        </div>
+         
       </header>
 
       <div className="page-content">
