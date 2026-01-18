@@ -47,7 +47,7 @@ function Login() {
       
       login(user); // Use auth context login function
       setLoading(false);
-      navigate('/profile');
+      navigate('/');
     }, 600);
   };
 
