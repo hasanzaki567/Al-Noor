@@ -1,0 +1,774 @@
+/* ============================================
+   TEACHER DASHBOARD STYLES
+   Al Noor Academy - Teacher Portal
+   ============================================ */
+
+/* Base Styles */
+.teacher-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f6f0 0%, #f2efe5 100%);
+  position: relative;
+  padding: 100px 20px 60px;
+  overflow: hidden;
+}
+
+/* Background Decorations */
+.td-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.td-leaf {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 C30 25, 10 50, 50 95 C90 50, 70 25, 50 5' fill='%231A9B8E' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.td-leaf-1 {
+  bottom: -50px;
+  left: -50px;
+  transform: rotate(-30deg);
+}
+
+.td-leaf-2 {
+  bottom: 20%;
+  right: -100px;
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+.td-leaf-3 {
+  top: 10%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  transform: rotate(-15deg);
+  opacity: 0.4;
+}
+
+/* Container */
+.td-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.td-header {
+  margin-bottom: 30px;
+}
+
+.td-portal-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #1A9B8E;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.td-sparkle {
+  color: #C9A961;
+  font-size: 0.8em;
+}
+
+.td-sparkle.small {
+  font-size: 0.65em;
+}
+
+.td-greeting {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main Grid Layout */
+.td-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 25px;
+}
+
+/* Columns */
+.td-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.td-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Base Styles */
+.td-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.td-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Header */
+.td-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.td-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.td-card-title i {
+  color: #1A9B8E;
+  font-size: 1rem;
+}
+
+.td-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.td-nav-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 8px;
+  color: #7F8C8D;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.td-nav-btn:hover {
+  background: #1A9B8E;
+  color: #fff;
+}
+
+.td-view-all {
+  font-size: 0.9rem;
+  color: #1A9B8E;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.td-view-all:hover {
+  color: #157A6A;
+}
+
+/* ============================================
+   TODAY'S CLASSES CARD
+   ============================================ */
+
+.td-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.td-class-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.td-class-item:hover {
+  background: #f5f5f5;
+  transform: translateX(4px);
+  border-color: #e0e0e0;
+}
+
+.td-class-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.td-class-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.td-class-info {
+  flex: 1;
+}
+
+.td-class-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 4px;
+}
+
+.td-class-time {
+  font-size: 0.85rem;
+  color: #7F8C8D;
+  margin: 0;
+}
+
+.td-join-btn {
+  padding: 10px 22px;
+  border: 2px solid #1A9B8E;
+  background: transparent;
+  color: #1A9B8E;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.td-join-btn:hover {
+  background: #1A9B8E;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.td-join-btn.live {
+  background: #1A9B8E;
+  color: #fff;
+}
+
+.td-join-btn.live:hover {
+  background: #157A6A;
+  border-color: #157A6A;
+}
+
+/* ============================================
+   MY STUDENTS CARD
+   ============================================ */
+
+.td-students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.td-student-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  background: #fafafa;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.td-student-item:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.td-student-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.td-student-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.td-student-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.td-student-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 6px;
+}
+
+.td-student-progress {
+  font-size: 0.85rem;
+  color: #5a6c7d;
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+.td-student-detail {
+  font-size: 0.8rem;
+  color: #7F8C8D;
+  margin: 0;
+}
+
+.td-student-badge {
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   QUICK ACTIONS CARD (Bottom)
+   ============================================ */
+
+.td-quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.td-quick-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.td-quick-action-btn:hover {
+  background: #f0f9f8;
+  border-color: #1A9B8E;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(26, 155, 142, 0.12);
+}
+
+.td-action-icon {
+  width: 50px;
+  height: 50px;
+  background: #e8f5f3;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.td-quick-action-btn:hover .td-action-icon {
+  background: #1A9B8E;
+}
+
+.td-action-icon i {
+  font-size: 1.3rem;
+  color: #1A9B8E;
+  transition: color 0.3s ease;
+}
+
+.td-quick-action-btn:hover .td-action-icon i {
+  color: #fff;
+}
+
+.td-action-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2C3E50;
+  text-align: center;
+}
+
+/* ============================================
+   SCHEDULE CALENDAR CARD
+   ============================================ */
+
+.td-schedule-card {
+  padding-bottom: 20px;
+}
+
+.td-calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.td-month-nav {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #7F8C8D;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.td-month-nav:hover {
+  background: #f5f5f5;
+  color: #1A9B8E;
+}
+
+.td-current-month {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2C3E50;
+  min-width: 60px;
+  text-align: center;
+}
+
+.td-calendar {
+  margin-bottom: 20px;
+}
+
+.td-calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.td-week-day {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7F8C8D;
+  padding: 8px 0;
+  text-transform: uppercase;
+}
+
+.td-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #2C3E50;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: #f0f9f8;
+  color: #1A9B8E;
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day.today {
+  background: #C9A961;
+  color: #fff;
+  font-weight: 600;
+}
+
+.calendar-day.today:hover {
+  background: #b8925a;
+  color: #fff;
+}
+
+/* Schedule Stats */
+.td-schedule-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.td-stat-item {
+  text-align: center;
+}
+
+.td-stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2C3E50;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.td-stat-label {
+  font-size: 0.8rem;
+  color: #7F8C8D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.td-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: #e0e0e0;
+}
+
+/* ============================================
+   SIDEBAR QUICK ACTIONS
+   ============================================ */
+
+.td-sidebar-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.td-sidebar-action-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.td-sidebar-action-item:hover {
+  background: #f5f5f5;
+}
+
+.td-sidebar-action-icon {
+  width: 36px;
+  height: 36px;
+  background: #e8f5f3;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.td-sidebar-action-icon i {
+  font-size: 0.95rem;
+  color: #1A9B8E;
+}
+
+.td-sidebar-action-label {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2C3E50;
+}
+
+.td-action-arrow {
+  color: #c0c0c0;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.td-sidebar-action-item:hover .td-action-arrow {
+  transform: translateX(4px);
+  color: #1A9B8E;
+}
+
+/* ============================================
+   RECENT NOTES CARD
+   ============================================ */
+
+.td-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.td-note-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.td-note-item:hover {
+  background: #f5f5f5;
+  border-color: #e0e0e0;
+}
+
+.td-note-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #1A9B8E 0%, #157A6A 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.td-note-icon i {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.td-note-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.td-note-student {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 6px;
+}
+
+.td-note-text {
+  font-size: 0.8rem;
+  color: #7F8C8D;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .td-main-grid {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .td-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .td-right-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .td-schedule-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .teacher-dashboard {
+    padding: 80px 15px 40px;
+  }
+
+  .td-greeting {
+    font-size: 1.6rem;
+  }
+
+  .td-quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .td-right-column {
+    grid-template-columns: 1fr;
+  }
+
+  .td-class-item {
+    flex-wrap: wrap;
+  }
+
+  .td-join-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .td-student-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .td-student-badge {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .td-greeting {
+    font-size: 1.4rem;
+  }
+
+  .td-card {
+    padding: 18px;
+  }
+
+  .td-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .td-card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .td-quick-actions-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .td-quick-action-btn {
+    padding: 16px 12px;
+  }
+
+  .td-action-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .td-schedule-stats {
+    gap: 20px;
+  }
+}

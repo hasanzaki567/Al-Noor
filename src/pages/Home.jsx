@@ -831,7 +831,7 @@ function Home() {
         <div className="cta-content">
           <h2>Ready to Start Your Islamic Learning Path?</h2>
           <p>Join thousands of students transforming their faith and knowledge every month</p>
-          <button className="cta-button">Start Your Free Trial</button>
+          <button className=" btn-primary cta-button">Start Your Free Trial</button>
         </div>
       </section>
     </div>
