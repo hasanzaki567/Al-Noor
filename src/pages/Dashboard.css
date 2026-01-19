@@ -519,33 +519,30 @@
   gap: 25px;
 }
 
-/* Hero Banner */
+/* Hero Banner with Background Image */
 .gf-hero-banner {
-  background: linear-gradient(180deg, #f0ebe0 0%, #e8e3d8 50%, #ddd8cc 100%);
+  background-image: url("../assets/game.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 950px;
   border-radius: 24px;
-  padding: 30px;
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  grid-template-rows: auto auto;
-  gap: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
 }
 
-.gf-hero-banner::before {
-  content: '';
+.gf-hero-overlay {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 60%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 C30 25, 10 50, 50 95 C90 50, 70 25, 50 5' fill='%231A9B8E' opacity='0.03'/%3E%3C/svg%3E") no-repeat;
-  pointer-events: none;
+  left: 0;
+  padding: 30px 35px;
+  z-index: 2;
 }
 
-.gf-hero-content {
-  grid-column: 1;
-  grid-row: 1;
+.gf-hero-header {
+  margin-bottom: 0;
 }
 
 .gf-label {
@@ -553,381 +550,39 @@
   align-items: center;
   gap: 6px;
   font-size: 0.95rem;
-  color: #1A9B8E;
+  color: #7F8C8D;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .gf-hero-title {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #2C3E50;
-  line-height: 1.3;
+  line-height: 1.35;
   margin: 0;
+  font-style: italic;
 }
 
-/* Progress Path */
-.gf-progress-path {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gf-path-line {
-  display: flex;
-  align-items: flex-end;
-  gap: 40px;
-  position: relative;
-}
-
-.gf-path-line::before {
-  content: '';
-  position: absolute;
-  bottom: 45px;
-  left: 30px;
-  right: 30px;
-  height: 6px;
-  background: linear-gradient(90deg, #C9A961 0%, #C9A961 50%, #e0d5c0 50%, #e0d5c0 100%);
-  border-radius: 3px;
-  z-index: 0;
-}
-
-.gf-milestone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-
-.gf-milestone-icon {
-  width: 50px;
-  height: 50px;
-  background: #f5f0e2;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #e0d5c0;
-  transition: all 0.3s ease;
-}
-
-.gf-milestone-icon i {
-  font-size: 1.2rem;
-  color: #7F8C8D;
-}
-
-.gf-milestone.current .gf-milestone-icon {
-  background: linear-gradient(135deg, #C9A961 0%, #b8925a 100%);
-  border-color: #C9A961;
-  box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
-}
-
-.gf-milestone.current .gf-milestone-icon i {
-  color: #fff;
-}
-
-.gf-milestone.end .gf-milestone-icon {
-  background: #f5f0e2;
-  border-color: #e0d5c0;
-}
-
-.gf-milestone-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #5a6c7d;
-  text-align: center;
-}
-
-.gf-milestone-xp {
-  font-size: 0.7rem;
-  color: #7F8C8D;
-}
-
-/* Profile Card */
-.gf-profile-card {
-  grid-column: 1;
-  grid-row: 2;
-  background: #fff;
-  border-radius: 20px;
-  padding: 25px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-}
-
-.gf-profile-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.gf-profile-avatar {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 15px;
-}
-
-.gf-profile-avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #C9A961;
-}
-
-.gf-level-badge {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #C9A961 0%, #b8925a 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border: 3px solid #fff;
-}
-
-.gf-profile-level {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #2C3E50;
-  margin: 0 0 8px;
-}
-
-.gf-xp-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.gf-xp-value {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1A9B8E;
-}
-
-.gf-xp-stars {
-  font-size: 0.9rem;
-}
-
-.gf-progress-bar {
-  width: 100%;
-  height: 8px;
-  background: #e8e1d2;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.gf-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #1A9B8E 0%, #2DB8A5 100%);
-  border-radius: 4px;
-  transition: width 0.5s ease;
-}
-
-.gf-mastered-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: #f5f0e2;
-  border: none;
-  border-radius: 25px;
-  color: #5a6c7d;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.gf-mastered-btn:hover {
-  background: #1A9B8E;
-  color: #fff;
-}
-
-/* Congratulations Card */
-.gf-congrats-card {
-  grid-column: 2;
-  grid-row: 2;
-  background: #fff;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-}
-
-.gf-congrats-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.gf-congrats-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.gf-congrats-text {
-  font-size: 0.95rem;
-  color: #5a6c7d;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.gf-congrats-text strong {
-  color: #2C3E50;
-  font-weight: 600;
-}
-
-.gf-congrats-trophy {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #C9A961 0%, #b8925a 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.gf-congrats-trophy i {
-  font-size: 1.4rem;
-  color: #fff;
-}
-
-.gf-rewards-section {
-  margin-bottom: 20px;
-}
-
-.gf-rewards-section h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #2C3E50;
-  margin: 0 0 12px;
-}
-
-.gf-rewards-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.gf-rewards-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.9rem;
-  color: #5a6c7d;
-}
-
-.gf-rewards-list li i {
-  color: #C9A961;
-  font-size: 0.85rem;
-}
-
-.gf-reward-items {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.gf-reward-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #f8f6f0;
-  border-radius: 14px;
-  flex: 1;
-  transition: all 0.3s ease;
-}
-
-.gf-reward-item:hover {
-  background: #f0ebe0;
-  transform: scale(1.02);
-}
-
-.gf-reward-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gf-reward-icon.gold {
-  background: linear-gradient(135deg, #C9A961 0%, #b8925a 100%);
-}
-
-.gf-reward-icon i {
-  font-size: 1.1rem;
-  color: #fff;
-}
-
-.gf-reward-xp {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #2C3E50;
-}
-
-.gf-reward-badges {
-  display: flex;
-  gap: 4px;
-}
-
-.gf-reward-badges i {
-  font-size: 0.8rem;
-  color: #C9A961;
-}
-
-.gf-leaderboard-btn {
-  width: 100%;
-  padding: 14px 24px;
-  background: #2C3E50;
-  border: none;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.gf-leaderboard-btn:hover {
-  background: #1a2a3a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
-}
-
-/* Bottom Grid */
+/* Bottom Grid - Two Column Layout */
 .gf-bottom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
 }
 
+.gf-left-column,
+.gf-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* Card Base */
 .gf-card {
   background: #fff;
   border-radius: 20px;
-  padding: 25px;
+  padding: 22px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
@@ -940,58 +595,103 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .gf-card-header h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2C3E50;
   margin: 0;
 }
 
-.gf-sparkle {
-  color: #C9A961;
-  font-size: 0.9rem;
-}
-
 .gf-view-link {
   font-size: 0.85rem;
-  color: #1A9B8E;
+  color: #7F8C8D;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .gf-view-link:hover {
-  color: #157A6A;
+  color: #1A9B8E;
 }
 
-/* Section Subtitle */
-.gf-section-subtitle {
-  font-size: 0.95rem;
+/* Achievement Badges */
+.gf-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.gf-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.gf-badge-item:hover {
+  transform: translateY(-3px);
+}
+
+.gf-badge-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.gf-badge-icon i {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.gf-badge-item.locked .gf-badge-icon {
+  opacity: 0.5;
+}
+
+.gf-badge-item.locked .gf-badge-icon i {
+  color: #999;
+}
+
+.gf-badge-name {
+  font-size: 0.75rem;
   font-weight: 600;
   color: #2C3E50;
-  margin: 0 0 15px;
-  padding-left: 12px;
-  border-left: 3px solid #1A9B8E;
+  line-height: 1.3;
 }
 
-/* Leaderboard */
+.gf-badge-xp {
+  font-size: 0.7rem;
+  color: #7F8C8D;
+}
+
+/* Leaderboard Card */
+.gf-leaderboard-card {
+  padding-bottom: 15px;
+}
+
 .gf-leaderboard-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .gf-leaderboard-item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 14px;
+  gap: 12px;
+  padding: 10px 12px;
   background: #fafafa;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid #f0f0f0;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1003,32 +703,18 @@
   border-color: #e0e0e0;
 }
 
-.gf-rank {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #7F8C8D;
-  min-width: 24px;
-  text-align: center;
-}
-
-.gf-leaderboard-item:first-child .gf-rank {
-  color: #C9A961;
-}
-
-.gf-leaderboard-item:nth-child(2) .gf-rank {
-  color: #95a5a6;
-}
-
-.gf-leaderboard-item:nth-child(3) .gf-rank {
-  color: #cd7f32;
+.gf-leaderboard-item.top-rank {
+  background: linear-gradient(135deg, #f8f6f0 0%, #f5f0e5 100%);
+  border: 2px solid #C9A961;
 }
 
 .gf-leader-avatar {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+  position: relative;
 }
 
 .gf-leader-avatar img {
@@ -1037,20 +723,27 @@
   object-fit: cover;
 }
 
+.gf-top-badge {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  font-size: 0.8rem;
+}
+
 .gf-leader-info {
   flex: 1;
   min-width: 0;
 }
 
 .gf-leader-info h5 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #2C3E50;
-  margin: 0 0 3px;
+  margin: 0 0 2px;
 }
 
 .gf-leader-info p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #7F8C8D;
   margin: 0;
 }
@@ -1058,37 +751,43 @@
 .gf-leader-xp {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .gf-xp-badge {
-  padding: 6px 14px;
+  padding: 5px 12px;
   background: linear-gradient(135deg, #e8f5f3 0%, #d4ede9 100%);
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #1A9B8E;
 }
 
+.gf-xp-badge.highlight {
+  background: linear-gradient(135deg, #C9A961 0%, #b8925a 100%);
+  color: #fff;
+  padding: 6px 14px;
+}
+
 .gf-leader-xp i {
   color: #c0c0c0;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   transition: transform 0.2s ease;
 }
 
 .gf-leaderboard-item:hover .gf-leader-xp i {
-  transform: translateX(4px);
+  transform: translateX(3px);
   color: #1A9B8E;
 }
 
 .gf-view-all-btn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 12px 20px;
   background: linear-gradient(135deg, #1A9B8E 0%, #0F5F5C 100%);
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1099,32 +798,29 @@
   box-shadow: 0 6px 20px rgba(26, 155, 142, 0.3);
 }
 
-/* Challenges */
-.gf-daily-challenge,
-.gf-weekly-challenges {
-  margin-bottom: 25px;
+/* Challenges Card */
+.gf-section-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 0 0 12px;
+  padding-left: 10px;
+  border-left: 3px solid #1A9B8E;
 }
 
-.gf-weekly-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.gf-daily-challenge {
   margin-bottom: 15px;
-}
-
-.gf-weekly-header .gf-section-subtitle {
-  margin-bottom: 0;
 }
 
 .gf-challenge-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 14px 16px;
   background: #fafafa;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid #f0f0f0;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   transition: all 0.3s ease;
 }
 
@@ -1138,25 +834,25 @@
 }
 
 .gf-challenge-info h5 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #2C3E50;
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 }
 
 .gf-challenge-info p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #7F8C8D;
   margin: 0;
 }
 
 .gf-assign-btn {
-  padding: 10px 24px;
+  padding: 8px 20px;
   background: linear-gradient(135deg, #1A9B8E 0%, #0F5F5C 100%);
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1164,7 +860,7 @@
 
 .gf-assign-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(26, 155, 142, 0.3);
+  box-shadow: 0 4px 12px rgba(26, 155, 142, 0.3);
 }
 
 .gf-challenge-reward {
@@ -1176,8 +872,8 @@
 .gf-challenge-xp {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
+  gap: 5px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #1A9B8E;
 }
@@ -1186,34 +882,27 @@
   color: #27AE60;
 }
 
-.gf-reward-btn {
-  padding: 8px 18px;
+.gf-completed-btn {
+  padding: 6px 14px;
   background: #f5f0e2;
-  border: none;
-  border-radius: 20px;
-  color: #5a6c7d;
-  font-size: 0.85rem;
+  border: 1px solid #e0d5c0;
+  border-radius: 15px;
+  color: #7F8C8D;
+  font-size: 0.75rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  cursor: default;
 }
 
-.gf-reward-btn:hover {
-  background: #C9A961;
-  color: #fff;
-}
-
-/* Motivation & Rewards */
-.gf-motivation-section {
-  padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
+/* Motivation & Rewards Card */
+.gf-motivation-card {
+  padding-bottom: 20px;
 }
 
 .gf-motivation-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .gf-motivation-header h3 {
@@ -1224,12 +913,12 @@
 }
 
 .gf-reward-students-btn {
-  padding: 10px 20px;
+  padding: 8px 18px;
   background: linear-gradient(135deg, #1A9B8E 0%, #0F5F5C 100%);
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1237,22 +926,22 @@
 
 .gf-reward-students-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(26, 155, 142, 0.3);
+  box-shadow: 0 4px 12px rgba(26, 155, 142, 0.3);
 }
 
 .gf-motivation-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .gf-motivation-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
-  padding: 16px;
+  padding: 14px 16px;
   background: #fafafa;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid #f0f0f0;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1261,12 +950,13 @@
 .gf-motivation-item:hover {
   background: #f5f5f5;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.gf-motivation-icon {
-  width: 44px;
-  height: 44px;
+.gf-motivation-icon-img {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #f8f6f0 0%, #f0ebe0 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1274,86 +964,82 @@
   flex-shrink: 0;
 }
 
-.gf-motivation-icon i {
-  font-size: 1.1rem;
-  color: #fff;
+.gf-motivation-icon-img i {
+  font-size: 1.2rem;
+}
+
+.gf-motivation-info {
+  flex: 1;
 }
 
 .gf-motivation-info h5 {
   font-size: 0.9rem;
   font-weight: 600;
   color: #2C3E50;
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 }
 
 .gf-motivation-info p {
   font-size: 0.75rem;
   color: #7F8C8D;
   margin: 0;
-  line-height: 1.4;
+}
+
+.gf-motivation-reward {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #f8f6f0 0%, #f0ebe0 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gf-motivation-reward i {
+  font-size: 1.1rem;
 }
 
 /* Gamification Responsive */
 @media (max-width: 1024px) {
   .gf-hero-banner {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .gf-hero-content,
-  .gf-progress-path,
-  .gf-profile-card,
-  .gf-congrats-card {
-    grid-column: 1;
-  }
-
-  .gf-progress-path {
-    order: 1;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-
-  .gf-hero-content {
-    order: 0;
-  }
-
-  .gf-profile-card {
-    order: 2;
-  }
-
-  .gf-congrats-card {
-    order: 3;
+    aspect-ratio: 16 / 8;
+    min-height: 350px;
+    background-size: cover;
   }
 
   .gf-bottom-grid {
     grid-template-columns: 1fr;
   }
+
+  .gf-badges-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .gf-hero-banner {
+    aspect-ratio: 4 / 3;
+    min-height: 300px;
+    border-radius: 16px;
+  }
+
+  .gf-hero-overlay {
     padding: 20px;
   }
 
   .gf-hero-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
-  .gf-path-line {
-    gap: 25px;
+  .gf-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
-  .gf-milestone-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .gf-reward-items {
-    flex-direction: column;
-  }
-
-  .gf-motivation-grid {
-    grid-template-columns: 1fr;
+  .gf-badge-icon {
+    width: 50px;
+    height: 50px;
   }
 
   .gf-challenge-item {
@@ -1366,12 +1052,25 @@
     width: 100%;
     justify-content: space-between;
   }
+
+  .gf-assign-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
-  .gf-congrats-header {
-    flex-direction: column;
-    gap: 15px;
+  .gf-hero-banner {
+    aspect-ratio: 3 / 2;
+    min-height: 250px;
+  }
+
+  .gf-hero-title {
+    font-size: 1.3rem;
+  }
+
+  .gf-card {
+    padding: 16px;
   }
 
   .gf-motivation-header {
@@ -1382,12 +1081,14 @@
 
   .gf-reward-students-btn {
     width: 100%;
+    text-align: center;
   }
 
-  .gf-card {
-    padding: 18px;
+  .gf-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
 
 /* Subscription Section - Kept for backwards compatibility */
 .subscription-info {

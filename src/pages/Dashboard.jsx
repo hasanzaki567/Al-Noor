@@ -4,6 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import usePageTitle from "../hooks/usePageTitle";
 import TeacherDashboard from './TeacherDashboard';
 import './Dashboard.css';
+ import game from '../assets/game.png';
+ 
 
 function Dashboard() {
   usePageTitle("My Dashboard");
@@ -495,136 +497,59 @@ function GamificationSection({ userData }) {
     { id: 4, icon: 'fas fa-medal', title: 'Monthly Top Performer', desc: 'Memcom earb rewards intogirenta and msants', color: '#1A9B8E' },
   ];
 
+  // Achievement badges
+  const achievementBadges = [
+    { id: 1, name: 'Memorization Master', icon: 'fas fa-trophy', color: '#C9A961', earned: true },
+    { id: 2, name: 'Tajweed Pro', icon: 'fas fa-award', color: '#1A9B8E', earned: true },
+    { id: 3, name: 'Consistent Learner', icon: 'fas fa-star', color: '#1A9B8E', earned: true },
+    { id: 4, name: 'Quran Explorer', icon: 'fas fa-book-open', color: '#C9A961', earned: false, xp: 700 },
+  ];
+
   return (
     <div className="gamification-section">
-      {/* Hero Banner */}
+      {/* Hero Banner with Background Image */}
       <div className="gf-hero-banner">
-        <div className="gf-hero-content">
-          <span className="gf-label">✦ Gamification</span>
-          <h2 className="gf-hero-title">Enhancing Learning<br/>Through Gamification</h2>
-        </div>
-        
-        {/* Progress Path */}
-        <div className="gf-progress-path">
-          <div className="gf-path-line">
-            <div className="gf-milestone start">
-              <div className="gf-milestone-icon">
-                <i className="fas fa-book-reader"></i>
-              </div>
-              <span className="gf-milestone-label">Beginner</span>
-              <span className="gf-milestone-xp">+ 50 XP</span>
-            </div>
-            <div className="gf-milestone current">
-              <div className="gf-milestone-icon">
-                <i className="fas fa-trophy"></i>
-              </div>
-              <span className="gf-milestone-label">Hafiz Master</span>
-              <span className="gf-milestone-xp">1350 XP</span>
-            </div>
-            <div className="gf-milestone end">
-              <div className="gf-milestone-icon">
-                <i className="fas fa-crown"></i>
-              </div>
-              <span className="gf-milestone-label">Hafiz Master</span>
-              <span className="gf-milestone-xp">2350 XP</span>
-            </div>
+        <div className="gf-hero-overlay">
+          <div className="gf-hero-header">
+            <span className="gf-label">✦ Gamification</span>
+            <h2 className="gf-hero-title">Encouraging Quran Learning<br/>Through Gamification</h2>
           </div>
-        </div>
-
-        {/* User Profile Card */}
-        <div className="gf-profile-card">
-          <div className="gf-profile-avatar">
-            <img 
-              src="/student-avatar.webp" 
-              alt={displayName}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=1A9B8E&color=fff&size=120`;
-              }}
-            />
-            <span className="gf-level-badge">4</span>
-          </div>
-          <h3 className="gf-profile-level">Qari Expert</h3>
-          <div className="gf-xp-display">
-            <span className="gf-xp-value">1350 XP</span>
-            <span className="gf-xp-stars">⭐⭐⭐</span>
-          </div>
-          <div className="gf-progress-bar">
-            <div className="gf-progress-fill" style={{ width: '68%' }}></div>
-          </div>
-          <button className="gf-mastered-btn">
-            <i className="fas fa-play"></i>
-            Pity Halste Mastered
-          </button>
-        </div>
-
-        {/* Congratulations Card */}
-        <div className="gf-congrats-card">
-          <div className="gf-congrats-header">
-            <p className="gf-congrats-text">
-              <strong>Congratulations</strong> {displayName}! You're just 150 XP away<br/>
-              from reaching Hafiz Master level. Keep it up!
-            </p>
-            <div className="gf-congrats-trophy">
-              <i className="fas fa-trophy"></i>
-            </div>
-          </div>
-          
-          <div className="gf-rewards-section">
-            <h4>Rewards for Hafiz Master</h4>
-            <ul className="gf-rewards-list">
-              <li><i className="fas fa-certificate"></i> Badges</li>
-              <li><i className="fas fa-star"></i> XP Points</li>
-              <li><i className="fas fa-gift"></i> Bonus Activities</li>
-            </ul>
-          </div>
-
-          <div className="gf-reward-items">
-            <div className="gf-reward-item">
-              <div className="gf-reward-icon gold">
-                <i className="fas fa-medal"></i>
-              </div>
-              <span className="gf-reward-xp">200 XP</span>
-              <div className="gf-reward-badges">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </div>
-            </div>
-            <div className="gf-reward-item">
-              <div className="gf-reward-icon gold">
-                <i className="fas fa-award"></i>
-              </div>
-              <span className="gf-reward-xp">100 XP</span>
-              <div className="gf-reward-badges">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-heart"></i>
-                <i className="fas fa-gem"></i>
-              </div>
-            </div>
-          </div>
-
-          <button className="gf-leaderboard-btn">
-            View Full Leaderboard
-          </button>
         </div>
       </div>
 
-      {/* Bottom Grid */}
+      {/* Bottom Grid - Two Column Layout */}
       <div className="gf-bottom-grid">
-        {/* Ranking & Challenges Card */}
-        <div className="gf-card gf-ranking-card">
-          <div className="gf-card-header">
-            <h3>Ranking & Challenges</h3>
-            <span className="gf-sparkle">✦✦</span>
+        {/* Left Column */}
+        <div className="gf-left-column">
+          {/* Achievement Badges Card */}
+          <div className="gf-card gf-badges-card">
+            <div className="gf-card-header">
+              <h3>Achievement Badges</h3>
+              <a href="#" className="gf-view-link">View All</a>
+            </div>
+            <div className="gf-badges-grid">
+              {achievementBadges.map((badge) => (
+                <div key={badge.id} className={`gf-badge-item ${badge.earned ? 'earned' : 'locked'}`}>
+                  <div className="gf-badge-icon" style={{ background: badge.earned ? badge.color : '#e0e0e0' }}>
+                    <i className={badge.icon}></i>
+                  </div>
+                  <span className="gf-badge-name">{badge.name}</span>
+                  {!badge.earned && badge.xp && (
+                    <span className="gf-badge-xp">{badge.xp} XP</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-          
-          <div className="gf-leaderboard">
-            <h4 className="gf-section-subtitle">Leaderboard</h4>
+
+          {/* Leaderboard Card */}
+          <div className="gf-card gf-leaderboard-card">
+            <div className="gf-card-header">
+              <h3>Leaderboard</h3>
+            </div>
             <div className="gf-leaderboard-list">
-              {leaderboardData.map((item) => (
-                <div key={item.rank} className="gf-leaderboard-item">
-                  <span className="gf-rank">{item.rank}</span>
+              {leaderboardData.slice(0, 5).map((item, index) => (
+                <div key={item.rank} className={`gf-leaderboard-item ${index === 0 ? 'top-rank' : ''}`}>
                   <div className="gf-leader-avatar">
                     <img 
                       src={item.avatar} 
@@ -634,14 +559,21 @@ function GamificationSection({ userData }) {
                         e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=1A9B8E&color=fff`;
                       }}
                     />
+                    {index === 0 && <span className="gf-top-badge">⭐</span>}
                   </div>
                   <div className="gf-leader-info">
                     <h5>{item.name}</h5>
                     <p>{item.course}</p>
                   </div>
                   <div className="gf-leader-xp">
-                    <span className="gf-xp-badge">{item.xp} XP</span>
-                    <i className="fas fa-chevron-right"></i>
+                    {index === 0 ? (
+                      <span className="gf-xp-badge highlight">★ ••• {item.xp} XP ★</span>
+                    ) : (
+                      <>
+                        <span className="gf-xp-badge">{item.xp} XP</span>
+                        <i className="fas fa-chevron-right"></i>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
@@ -652,65 +584,89 @@ function GamificationSection({ userData }) {
           </div>
         </div>
 
-        {/* Challenges Card */}
-        <div className="gf-card gf-challenges-card">
-          <div className="gf-card-header">
-            <h3>Challenges</h3>
-            <a href="#" className="gf-view-link">View All</a>
-          </div>
-
-          {/* Daily Challenge */}
-          <div className="gf-daily-challenge">
-            <h4 className="gf-section-subtitle">Daily Challenge</h4>
-            <div className="gf-challenge-item daily">
-              <div className="gf-challenge-info">
-                <h5>Memorize 5 Ayahs from Surah Al-Mulk</h5>
-                <p>O hequite oyan sur prosecent tale agtaresd</p>
-              </div>
-              <button className="gf-assign-btn">Assign</button>
-            </div>
-          </div>
-
-          {/* Weekly Challenges */}
-          <div className="gf-weekly-challenges">
-            <div className="gf-weekly-header">
-              <h4 className="gf-section-subtitle">Weekly Challenges</h4>
+        {/* Right Column */}
+        <div className="gf-right-column">
+          {/* Challenges Card */}
+          <div className="gf-card gf-challenges-card">
+            <div className="gf-card-header">
+              <h3>Challenges</h3>
               <a href="#" className="gf-view-link">View All</a>
             </div>
-            {weeklyChallenges.map((challenge) => (
-              <div key={challenge.id} className="gf-challenge-item weekly">
+
+            {/* Daily Challenge */}
+            <div className="gf-daily-challenge">
+              <h4 className="gf-section-subtitle">Daily Challenge</h4>
+              <div className="gf-challenge-item daily">
                 <div className="gf-challenge-info">
-                  <h5>{challenge.title}</h5>
-                  <p>{challenge.desc}</p>
+                  <h5>Memorize 5 Ayahs from Surah Al-Mulk</h5>
+                  <p>O hequite gwa in prateont Level otled</p>
                 </div>
-                <div className="gf-challenge-reward">
-                  <span className="gf-challenge-xp">
-                    <i className="fas fa-check-circle"></i> {challenge.xp} XP
-                  </span>
-                  <button className="gf-reward-btn">Reward</button>
-                </div>
+                <button className="gf-assign-btn">Assign</button>
               </div>
-            ))}
+            </div>
+
+            {/* Completed Challenges */}
+            <div className="gf-completed-challenges">
+              {weeklyChallenges.map((challenge) => (
+                <div key={challenge.id} className="gf-challenge-item completed">
+                  <div className="gf-challenge-info">
+                    <h5>{challenge.title}</h5>
+                    <p>{challenge.desc}</p>
+                  </div>
+                  <div className="gf-challenge-reward">
+                    <span className="gf-challenge-xp">
+                      <i className="fas fa-check-circle"></i> {challenge.xp} XP
+                    </span>
+                    <button className="gf-completed-btn">Completed</button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Motivation & Rewards */}
-          <div className="gf-motivation-section">
+          <div className="gf-card gf-motivation-card">
             <div className="gf-motivation-header">
               <h3>Motivation & Rewards</h3>
               <button className="gf-reward-students-btn">Reward Students</button>
             </div>
             <div className="gf-motivation-grid">
-              {motivationItems.map((item) => (
-                <div key={item.id} className="gf-motivation-item">
-                  <div className="gf-motivation-icon" style={{ background: item.color }}>
-                    <i className={item.icon}></i>
-                  </div>
-                  <div className="gf-motivation-info">
-                    <h5>{item.title}</h5>
-                    <p>{item.desc}</p>
-                  </div>
+              <div className="gf-motivation-item">
+                <div className="gf-motivation-icon-img">
+                  <i className="fas fa-trophy" style={{ color: '#C9A961' }}></i>
                 </div>
-              ))}
+                <div className="gf-motivation-info">
+                  <h5>Challenges for XP</h5>
+                  <p>Complete challenges for extra XP points</p>
+                </div>
+                <div className="gf-motivation-reward">
+                  <i className="fas fa-gift" style={{ color: '#1A9B8E' }}></i>
+                </div>
+              </div>
+              <div className="gf-motivation-item">
+                <div className="gf-motivation-icon-img">
+                  <i className="fas fa-coins" style={{ color: '#C9A961' }}></i>
+                </div>
+                <div className="gf-motivation-info">
+                  <h5>7 day SYP</h5>
+                  <p>Galamity neginets resurect insegelzions</p>
+                </div>
+                <div className="gf-motivation-reward">
+                  <i className="fas fa-medal" style={{ color: '#C9A961' }}></i>
+                </div>
+              </div>
+              <div className="gf-motivation-item">
+                <div className="gf-motivation-icon-img">
+                  <i className="fas fa-medal" style={{ color: '#1A9B8E' }}></i>
+                </div>
+                <div className="gf-motivation-info">
+                  <h5>1n1 for top</h5>
+                  <p>Top stats Insect aninett fty revarnes</p>
+                </div>
+                <div className="gf-motivation-reward">
+                  <i className="fas fa-trophy" style={{ color: '#C9A961' }}></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
