@@ -49,7 +49,6 @@ function Dashboard() {
     { id: 'events', label: 'Events', icon: 'fas fa-calendar-alt' },
     { id: 'one-on-one', label: 'One-on-One', icon: 'fas fa-user-friends' },
     { id: 'profile', label: 'My Profile', icon: 'fas fa-user' },
-    { id: 'password', label: 'Change Password', icon: 'fas fa-lock' },
     { id: 'gamification', label: 'Gamification', icon: 'fas fa-trophy' },
   ];
 
@@ -174,13 +173,6 @@ function Dashboard() {
             {activeTab === 'profile' && (
               <div className="tab-content">
                 <ProfileSection userData={userData} />
-              </div>
-            )}
-
-            {/* Change Password Tab */}
-            {activeTab === 'password' && (
-              <div className="tab-content">
-                <ChangePasswordSection />
               </div>
             )}
 

@@ -195,12 +195,15 @@ border-radius: 12px;
   justify-content: center;
   gap: 40px;
   padding: 50px 8%;
-  background: #f9f6f9;
+  background: #fff;
+  border: 1px solid #3a3838;
+  border-radius: 16px;
 }
 
 .stat h3 {
   font-size: 32px;
   text-align: center;
+  color: #8ae0ab;
 }
 
 .stat p {
@@ -218,6 +221,7 @@ border-radius: 12px;
 
 .courses-cta h2 {
   margin-bottom: 12px;
+  color: #000;
 }
 
 .courses-cta p {
