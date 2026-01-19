@@ -8,11 +8,16 @@
 
 /* Hero Section */
 .contact-hero {
-  background: linear-gradient(135deg, #e8f4f3 0%, #d4ebe8 50%, #c5e4e0 100%);
+ 
   padding: 120px 20px 80px;
   position: relative;
   overflow: hidden;
   text-align: center;
+background-image: url("../assets/madina.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
 }
 
 .contact-hero-content {

@@ -15,7 +15,6 @@ function Quran() {
   return (
     <div className="page-container">
       <header className="page-header premium-header">
-        <div className="header-icon" aria-hidden="true">🕋</div>
         <h1>Quran</h1>
         <p>Discover, recite, and reflect on the Quran</p>
          
