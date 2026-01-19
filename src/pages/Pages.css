@@ -692,8 +692,8 @@
 }
 
 .surah-card:hover {
-  background: linear-gradient(to right, #0ea5e9, #22c55e);
-  color: #ffffff;
+   border:2px solid #000000;
+   
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   border-color: transparent;
@@ -702,7 +702,7 @@
 .surah-card:hover h3,
 .surah-card:hover .surah-number,
 .surah-card:hover .surah-meaning {
-  color: #ffffff;
+  color: #000000;
 }
 
 .surah-number {
