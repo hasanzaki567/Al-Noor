@@ -1539,7 +1539,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('/quran-bg.jpg');
+  /* background-image: url('/quran-bg.jpg'); */ /* Image not found - commented out */
   background-size: cover;
   background-position: center;
 }
