@@ -13,9 +13,9 @@ function About() {
   const huffazData = [
     {
       id: 1,
-      name: 'Sheikh Ahmad Al-Rashid',
+      name: 'Sheikh Zaid',
       title: 'Head of Hifz Department',
-      memorizedAge: 12,
+      memorizedAge: 15,
       yearsTeaching: 15,
       students: 500,
       image: ustadh,
@@ -23,7 +23,7 @@ function About() {
     },
     {
       id: 2,
-      name: 'Ustadh Muhammad Yusuf',
+      name: 'Ustadh Suleiman',
       title: 'Senior Quran Instructor',
       memorizedAge: 14,
       yearsTeaching: 12,
@@ -53,7 +53,7 @@ function About() {
     },
     {
       id: 5,
-      name: 'Ustadha Fatima Al-Zahra',
+      name: 'Ustadha Mujahidha',
       title: 'Female Instructor Lead',
       memorizedAge: 13,
       yearsTeaching: 10,
