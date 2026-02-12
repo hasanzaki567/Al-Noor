@@ -1,3 +1,36 @@
+/* ============================================
+   DASHBOARD.CSS - DASHBOARD PAGE SPECIFIC STYLES
+   Al Noor Academy
+   ============================================
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .breadcrumb         → Navigation breadcrumb
+   - .breadcrumb-item    → Breadcrumb links
+   - .breadcrumb-separator → Breadcrumb dividers
+   - .content-card       → Card containers
+   - .card-header        → Card title sections
+   - .empty-state        → Empty state displays
+   - .empty-icon         → Empty state icons
+   - .btn-primary        → Primary action buttons
+   - .tabs, .tab         → Tab navigation (aliased as .dashboard-tabs, .dashboard-tab)
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .dashboard-page     → Main page wrapper
+   - .dashboard-hero     → Hero banner section
+   - .dashboard-hero-*   → Hero content & decorations
+   - .dashboard-title    → Page title
+   - .dashboard-main     → Main content area
+   - .dashboard-container → Content container
+   - .dashboard-tabs     → Tab navigation
+   - .dashboard-tab      → Individual tabs
+   - .dashboard-content  → Tab content area
+   - .tab-content        → Active tab content
+   - .classes-section    → Classes listing
+   - .gamification-*     → Gamification features
+   - .profile-section    → Profile tab content
+   
+   ============================================ */
+
 /* Dashboard Page Styles */
 
 /* Hero Section */

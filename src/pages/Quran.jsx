@@ -1,4 +1,5 @@
-import './Pages.css';
+import '../styles/shared.css';  /* Shared styles: .page-container, .page-header, .page-content */
+import './Quran.css';            /* Page-specific styles: .quran-grid, .surah-card, .surah-number */
 import usePageTitle from "../hooks/usePageTitle";
 
 function Quran() {

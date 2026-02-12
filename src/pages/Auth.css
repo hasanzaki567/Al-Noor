@@ -1,3 +1,43 @@
+/* ============================================
+   AUTH.CSS - LOGIN & SIGNUP PAGE STYLES
+   Al Noor Academy
+   ============================================
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .form-group         → Form field containers
+   - .error-message      → Error feedback
+   - .success-message    → Success feedback
+   - .btn-primary        → Primary submit buttons
+   - .loading-spinner    → Loading animation
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   
+   LOGIN PAGE (.auth-page-wrapper):
+   - .auth-page.modern   → Two-panel layout
+   - .auth-left          → Left branding panel
+   - .auth-left-content  → Branding content
+   - .auth-left-decoration → Decorative circles
+   - .auth-branding      → Logo & tagline
+   - .auth-features      → Feature list
+   - .auth-testimonial   → Testimonial quote
+   - .auth-right         → Right form panel
+   - .auth-form-container → Form wrapper
+   - .auth-header        → Form header
+   - .user-type-tabs     → Student/Teacher toggle
+   
+   SIGNUP PAGE (.signup-page-wrapper):
+   - .signup-page        → Two-panel layout
+   - .signup-left        → Left image panel
+   - .signup-right       → Right form panel
+   - .signup-form-container → Form wrapper
+   - .signup-title       → Form title
+   - .signup-type-toggle → User type selection
+   - .signup-form        → Form fields
+   - .signup-field       → Individual fields
+   - .signup-error       → Error display
+   
+   ============================================ */
+
 /* ==========================================
    PROFESSIONAL AUTH PAGE DESIGN
    Modern, Clean & Elegant

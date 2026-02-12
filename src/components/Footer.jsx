@@ -10,7 +10,7 @@ function Footer() {
         <div className="footer-content">
           <div className="footer-section brand-section">
             <div className="footer-brand">
-              <img src="./public/logoWeb.webp" alt="Al Noor Academy" className="footer-logo" />
+              <img src="/logoWeb.webp" alt="Al Noor Academy" className="footer-logo" />
               <h3>Al Noor Academy</h3>
             </div>
             <p>Bridging Islamic Knowledge and Modern Education. Your journey to enlightenment starts here.</p>

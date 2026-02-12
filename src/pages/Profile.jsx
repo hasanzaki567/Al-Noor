@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import './Profile.css';
+import '../styles/shared.css';  /* Shared styles: .loading-spinner, .tabs, .content-card, .form-group */
+import './Profile.css';          /* Page-specific: .profile-page, .profile-hero, .profile-tabs, .stats-section */
 
 function Profile() {
   const [user, setUser] = useState(null);

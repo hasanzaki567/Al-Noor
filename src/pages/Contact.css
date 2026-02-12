@@ -1,3 +1,28 @@
+/* ============================================
+   CONTACT.CSS - CONTACT PAGE SPECIFIC STYLES
+   Al Noor Academy
+   ============================================
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .form-group         → Form field containers
+   - .success-message    → Form success feedback
+   - .social-links       → Social media links container
+   - .social-link        → Individual social icons
+   - .btn-primary        → Submit button base (extended as .submit-btn)
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .contact-page       → Main page wrapper
+   - .contact-hero       → Hero banner section
+   - .contact-main       → Main content area
+   - .contact-container  → Content container
+   - .contact-grid       → Two-column layout
+   - .contact-form       → Form styling
+   - .contact-info       → Contact details section
+   - .info-item          → Individual info blocks
+   - .mosque-silhouette  → Decorative SVG
+   
+   ============================================ */
+
 /* Contact Page Styles */
 
 /* Page Container */

@@ -1,3 +1,35 @@
+/* ============================================
+   QURANLEARNING.CSS - QURAN CTA SECTION STYLES
+   Al Noor Academy
+   ============================================
+   
+   USAGE: Imported in Home.jsx, Courses.jsx for CTA sections
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .btn-primary        → Primary CTA buttons
+   - .btn-secondary      → Secondary CTA buttons
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .quran-section      → Main section wrapper
+   - .content-wrapper    → Content container
+   - .content-box        → Gradient background box
+   - .left-content       → Text content side
+   - .right-content      → Image content side
+   - .child-image        → Featured image
+   - .title              → Section title
+   - .description        → Section description
+   - .cta-buttons        → Button container
+   - .course-tags        → Course type tags
+   - .tag                → Individual tag
+   - .cta-section        → Alternate CTA layout
+   - .cta-box            → CTA card with background
+   - .cta-text           → CTA text content
+   - .cta-actions        → CTA button group
+   - .primary-btn        → Primary action button
+   - .secondary-btn      → Secondary action button
+   
+   ============================================ */
+
 .quran-section {
   padding: 0 20px;
   background: #ffffff;
@@ -16,7 +48,7 @@
   font-weight: 1000;
   line-height: 1;
   position: relative;
-   
+  background: white;
 }
 
 .content-wrapper {

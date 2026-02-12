@@ -1,0 +1,628 @@
+/* ============================================
+   AL-NOOR ACADEMY - SHARED STYLES
+   Common classes used across multiple pages
+   ============================================ */
+
+/* ==========================================
+   PAGE CONTAINERS
+   Used in: Quran.jsx, Scheduler.jsx, Courses.jsx
+   ========================================== */
+.page-container {
+  min-height: 100vh;
+  background: var(--color-background, #f5f0e2);
+}
+
+/* ==========================================
+   PAGE HEADERS
+   Used in: Quran.jsx, Scheduler.jsx
+   ========================================== */
+.page-header {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary, #1A9B8E) 0%, var(--color-section-dark, #0F5F5C) 100%);
+  color: white;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* ==========================================
+   PAGE CONTENT WRAPPER
+   Used in: Quran.jsx, Scheduler.jsx
+   ========================================== */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ==========================================
+   SECTION TITLES
+   Used in: Home.jsx, About.jsx, Courses.jsx, Dashboard.jsx, Profile.jsx
+   ========================================== */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-section-dark, #0F5F5C);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary, #7F8C8D);
+  margin-bottom: 30px;
+}
+
+/* ==========================================
+   CONTAINERS
+   Used in: Home.jsx, About.jsx, Contact.jsx
+   ========================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================
+   BUTTONS - PRIMARY
+   Used in: Home.jsx, About.jsx, Contact.jsx, Dashboard.jsx, Courses.jsx
+   
+   VARIANTS:
+   - .btn-primary        → Default teal gradient button
+   - .btn-primary-dark   → Black background button (for light sections)
+   - .btn-primary-light  → White background button (for dark overlays)
+   - .btn-primary-full   → Full width button
+   ========================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--color-primary, #1A9B8E) 0%, var(--color-section-dark, #0F5F5C) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 155, 142, 0.4);
+}
+
+/* Dark variant - black background */
+.btn-primary-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #111111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary-dark:hover {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Light variant - white background for dark overlays */
+.btn-primary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: #ffffff;
+  color: #111111;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Full width variant */
+.btn-primary-full {
+  width: 100%;
+}
+
+/* ==========================================
+   BUTTONS - SECONDARY/OUTLINE
+   Used in: Courses.jsx, Home.jsx
+   
+   VARIANTS:
+   - .btn-secondary       → Default outline button (dark border)
+   - .btn-secondary-light → Outline button for dark overlays (white border)
+   ========================================== */
+.btn-secondary,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--color-text-main, #2C3E50);
+  border: 2px solid var(--color-text-main, #2C3E50);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover,
+.btn-outline:hover {
+  background: var(--color-text-main, #2C3E50);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Light variant - for dark overlays */
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================
+   CARDS - BASE
+   Used in: Home.jsx, About.jsx, Dashboard.jsx, Courses.jsx
+   ========================================== */
+.card {
+  background: var(--color-surface, #FFFFFF);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* ==========================================
+   CONTENT CARD
+   Used in: Dashboard.jsx, Profile.jsx
+   ========================================== */
+.content-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-border, #ECE4D5);
+}
+
+.card-header i {
+  font-size: 1.3rem;
+  color: var(--color-primary, #1A9B8E);
+}
+
+.card-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+  flex: 1;
+}
+
+/* ==========================================
+   EMPTY STATE
+   Used in: Dashboard.jsx
+   ========================================== */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-state.small {
+  padding: 20px;
+}
+
+.empty-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(26, 155, 142, 0.1) 0%, rgba(15, 95, 92, 0.05) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.empty-icon i {
+  font-size: 2rem;
+  color: var(--color-primary, #1A9B8E);
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.empty-state p {
+  color: var(--color-text-secondary, #7F8C8D);
+  margin: 0 0 20px;
+}
+
+/* ==========================================
+   FORM ELEMENTS
+   Used in: Contact.jsx, Login.jsx, Signup.jsx
+   ========================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group .required {
+  color: var(--color-danger, #E74C3C);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-primary, #1A9B8E);
+  box-shadow: 0 0 0 3px rgba(26, 155, 142, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+}
+
+/* ==========================================
+   GRIDS
+   Used in: Home.jsx, About.jsx, Courses.jsx
+   ========================================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ==========================================
+   HERO DECORATIONS
+   Used in: Home.jsx, About.jsx, Contact.jsx, Dashboard.jsx
+   ========================================== */
+.hero-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   BADGES
+   Used in: About.jsx, Courses.jsx, Dashboard.jsx
+   ========================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background: rgba(26, 155, 142, 0.1);
+  color: var(--color-primary, #1A9B8E);
+}
+
+.badge-gold {
+  background: rgba(201, 169, 97, 0.1);
+  color: var(--color-accent-gold, #C9A961);
+}
+
+.badge-success {
+  background: var(--color-success-light, #D5F4E6);
+  color: var(--color-success, #27AE60);
+}
+
+/* ==========================================
+   TABS
+   Used in: Dashboard.jsx, Profile.jsx
+   ========================================== */
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: white;
+  padding: 8px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary, #5c6370);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  background: var(--color-background, #f5f0e2);
+  color: var(--color-primary, #1A9B8E);
+}
+
+.tab.active {
+  background: var(--color-primary, #1A9B8E);
+  color: white;
+}
+
+/* ==========================================
+   SUCCESS / ERROR MESSAGES
+   Used in: Contact.jsx, Login.jsx, Signup.jsx
+   ========================================== */
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: var(--color-success-light, #d4edda);
+  color: #155724;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: var(--color-danger-light, #FADBD8);
+  color: var(--color-danger, #E74C3C);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   BREADCRUMB
+   Used in: Dashboard.jsx
+   ========================================== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.breadcrumb-item {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item:hover {
+  color: #fff;
+}
+
+.breadcrumb-item.active {
+  color: var(--color-accent-gold, #C9A961);
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   LOADER / COMING SOON
+   Used in: Scheduler.jsx
+   ========================================== */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.loader h1 {
+  font-size: 2rem;
+  color: var(--color-text-secondary, #7F8C8D);
+  font-weight: 600;
+}
+
+/* ==========================================
+   LOADING SPINNER
+   Used in: Profile.jsx
+   ========================================== */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--color-border, #e8e1d2);
+  border-top-color: var(--color-primary, #1A9B8E);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   SOCIAL LINKS
+   Used in: Contact.jsx, Footer.jsx
+   ========================================== */
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  color: #555;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--color-primary, #1A9B8E);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================== */
+@media screen and (max-width: 992px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

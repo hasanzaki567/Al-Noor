@@ -1,6 +1,36 @@
 /* ============================================
-   TEACHER DASHBOARD STYLES
-   Al Noor Academy - Teacher Portal
+   TEACHERDASHBOARD.CSS - TEACHER PORTAL STYLES
+   Al Noor Academy
+   ============================================
+   
+   USAGE: TeacherDashboard.jsx (rendered when user.type === 'teacher')
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .content-card       → Card containers (aliased as .td-card)
+   - .card-header        → Card title sections (aliased as .td-card-header)
+   - .btn-primary        → Primary action buttons
+   - .empty-state        → Empty state displays
+   - .badge              → Status badges
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .teacher-dashboard  → Main page wrapper
+   - .td-bg-decoration   → Background decorations
+   - .td-leaf            → Decorative leaf patterns
+   - .td-container       → Content container
+   - .td-header          → Page header
+   - .td-greeting        → Welcome message
+   - .td-main-grid       → Two-column layout
+   - .td-left-column     → Main content column
+   - .td-right-column    → Sidebar column
+   - .td-card            → Card components
+   - .td-card-header     → Card headers
+   - .td-card-title      → Card titles
+   - .td-classes-list    → Today's classes
+   - .td-class-item      → Individual class
+   - .td-students-*      → Student management
+   - .td-schedule-*      → Schedule components
+   - .td-earnings-*      → Earnings display
+   
    ============================================ */
 
 /* Base Styles */

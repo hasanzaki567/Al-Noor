@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import './Auth.css';
-import './Pages.css';
+import '../styles/shared.css';  /* Shared styles: .form-group, .error-message, .btn-primary */
+import './Auth.css';             /* Page-specific: .auth-page, .auth-left, .auth-right, .auth-form */
+import './Pages.css';            /* Additional dashboard/premium header styles */
 
 function Login() {
   const [userType, setUserType] = useState('student');

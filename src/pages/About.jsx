@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import usePageTitle from "../hooks/usePageTitle";
-import './About.css';
+import '../styles/shared.css';  /* Shared styles: .container, .section-title, .btn-primary, .badge */
+import './About.css';            /* Page-specific: .about-page, .about-hero, .mission-section, .huffaz-section */
 import boy from '../assets/boy.jpg';
 import femaleteacher from '../assets/femaleteacher.png';
 import ustadh from '../assets/ustadh.png';

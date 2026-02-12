@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Home from "./pages/Home"
 import Courses from "./pages/Courses"
+import PearlsOfJuzAmma from "./pages/PearlsOfJuzAmma"
 import Scheduler from "./pages/Scheduler"
 import Quran from "./pages/Quran"
 import Dashboard from "./pages/Dashboard"
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/course/pearls-of-juz-amma" element={<PearlsOfJuzAmma />} />
         <Route path="/scheduler" element={<Scheduler />} />
         <Route path="/quran" element={<Quran />} />
         <Route path="/dashboard" element={<Dashboard />} />

@@ -1,3 +1,39 @@
+/* ============================================
+   PROFILE.CSS - PROFILE PAGE SPECIFIC STYLES
+   Al Noor Academy
+   ============================================
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .loading-spinner    → Loading animation
+   - .tabs, .tab         → Tab navigation (aliased as .profile-tabs, .profile-tab)
+   - .content-card       → Card containers
+   - .form-group         → Form field containers
+   - .btn-primary        → Primary action buttons
+   - .error-message      → Error feedback
+   - .success-message    → Success feedback
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .profile-page       → Main page wrapper
+   - .profile-loading    → Loading state
+   - .profile-hero       → Hero section with avatar
+   - .profile-hero-bg    → Hero background
+   - .hero-pattern       → Animated background pattern
+   - .profile-avatar-*   → Avatar styling
+   - .profile-name       → User name display
+   - .profile-role       → Role badge
+   - .role-badge         → Role indicator
+   - .profile-email      → Email display
+   - .profile-main       → Main content area
+   - .profile-container  → Content container
+   - .profile-tabs       → Tab navigation
+   - .profile-tab        → Individual tabs
+   - .profile-content    → Tab content area
+   - .stats-section      → Statistics display
+   - .stats-grid         → Stats layout
+   - .stat-card          → Individual stat cards
+   
+   ============================================ */
+
 /* ==========================================
    PROFESSIONAL PROFILE PAGE
    Light, Clean & Modern Design

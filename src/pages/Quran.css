@@ -1,0 +1,104 @@
+/* ============================================
+   QURAN PAGE STYLES
+   Al Noor Academy - Quran Reading Page
+   ============================================ */
+
+/* Quran Grid Layout */
+.quran-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Surah Card */
+.surah-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  border: 2px solid #e5e7eb;
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.3s black;
+  position: relative;
+  overflow: hidden;
+}
+
+.surah-card:hover {
+  background: var(--color-primary, #ffffff);
+  border-color: 5px solid black;
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: transparent;
+}
+
+.surah-card:hover h3,
+.surah-card:hover .surah-number,
+.surah-card:hover .surah-meaning,
+.surah-card:hover .surah-verses {
+  color: #ffffff;
+}
+
+/* Surah Number Badge */
+.surah-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #84d6e796;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(14, 165, 233, 0.18);
+}
+
+/* Surah Name */
+.surah-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 12px 0 8px 0;
+}
+
+/* Surah Meaning */
+.surah-meaning {
+  font-size: 0.97rem;
+  color: #475569;
+  font-style: italic;
+  margin: 6px 0;
+  letter-spacing: 0.01em;
+}
+
+/* Verses Count */
+.surah-verses {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #7F8C8D);
+  margin: 0 0 16px;
+}
+
+/* Read Button */
+.read-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--color-primary, #1A9B8E) 0%, var(--color-section-dark, #0F5F5C) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.read-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 155, 142, 0.4);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .quran-grid {
+    grid-template-columns: 1fr;
+  }
+}

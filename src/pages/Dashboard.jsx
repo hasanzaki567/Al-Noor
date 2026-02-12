@@ -3,7 +3,8 @@ import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import usePageTitle from "../hooks/usePageTitle";
 import TeacherDashboard from './TeacherDashboard';
-import './Dashboard.css';
+import '../styles/shared.css';  /* Shared styles: .breadcrumb, .tabs, .content-card, .empty-state, .btn-primary */
+import './Dashboard.css';        /* Page-specific: .dashboard-page, .dashboard-hero, .dashboard-tabs, .classes-section */
  import game from '../assets/game.png';
  
 

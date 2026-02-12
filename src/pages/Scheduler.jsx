@@ -1,4 +1,5 @@
-import './Pages.css';
+import '../styles/shared.css';  /* Shared styles: .page-container, .page-header, .loader */
+import './Scheduler.css';        /* Page-specific styles: .schedule-grid, .schedule-card, .day-badge */
 import usePageTitle from "../hooks/usePageTitle";
 
 function Scheduler() {

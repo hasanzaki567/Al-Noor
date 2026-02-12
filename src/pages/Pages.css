@@ -1,3 +1,24 @@
+/* ============================================
+   PAGES.CSS - PREMIUM/DASHBOARD SPECIFIC STYLES
+   Al Noor Academy
+   ============================================
+   
+   USAGE: Used in Login.jsx for premium header styles
+   
+   SHARED STYLES MOVED TO: ../styles/shared.css
+   - .page-container, .page-header, .page-content
+   - .section-title, .section-subtitle
+   - .container, .btn-primary, .btn-secondary
+   - .content-card, .card-header
+   - .empty-state, .form-group
+   - .tabs, .tab, .breadcrumb
+   - .success-message, .error-message
+   - .loading-spinner, .loader
+   - .social-links, .social-link
+   - Grid utilities (.grid-2, .grid-3, .grid-4, .grid-auto)
+   
+   ============================================ */
+
 /* --- Premium Page Header --- */
 .premium-header {
   background: linear-gradient(135deg, #10172A 0%, #181A20 100%);
@@ -325,7 +346,7 @@
   margin-left: 8px;
 }
 /* Course Pricing and CTA */
-.course-pricing-row {
+/* .course-pricing-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -344,8 +365,8 @@
   font-size: 1rem;
   font-weight: 500;
   color: #888;
-  margin-left: 2px;
-}
+  margin-left: 2px; */
+/* }
 .enroll-btn.premium {
   background: linear-gradient(90deg, #C9A961 0%, #1A9B8E 100%);
   color: #fff;
@@ -363,7 +384,7 @@
   box-shadow: 0 8px 32px rgba(201, 169, 97, 0.18);
   transform: translateY(-2px) scale(1.07) rotate(-1deg);
   filter: brightness(1.08) drop-shadow(0 2px 8px #C9A96144);
-}
+} */
 /* Student Reviews Section */
 .reviews-section {
   margin-top: 22px;
@@ -650,74 +671,6 @@
   color: #ffffff;
 }
 
-/* Quran Page */
-.quran-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
-  margin-top: 36px;
-
-  padding: 32px 0 32px 0;
-}
-
-.surah-card {
-  background-color: #ffffff;
-  padding: 28px 22px 24px 22px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 6px 32px rgba(16, 23, 42, 0.18);
-  border: 1px solid #38bdf8;
-  transition: 
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-  color: #0f172a;
-  position: relative;
-}
-
-.surah-card:hover {
-   border:2px solid #000000;
-   
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  border-color: transparent;
-}
-
-.surah-card:hover h3,
-.surah-card:hover .surah-number,
-.surah-card:hover .surah-meaning {
-  color: #000000;
-}
-
-.surah-number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #0ea5e9;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 8px rgba(14, 165, 233, 0.18);
-}
-
-.surah-card h3 {
-  font-size: 1.3rem;
-  margin: 12px 0 8px 0;
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.surah-meaning {
-  color: #475569;
-  font-style: italic;
-  font-size: 0.97rem;
-  margin: 6px 0;
-  letter-spacing: 0.01em;
-}
-
-.surah-verses {
-  color: #999;
-  font-size: 0.9rem;
-  margin: 10px 0 15px 0;
-}
 
 /* Dashboard Page */
 .stats-grid {
@@ -903,12 +856,14 @@
 }
 
 /* Contact Page */
+
+
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
-  background: #10172A;
   padding: 32px 0 32px 0;
 }
 
@@ -961,7 +916,7 @@
 }
 
 .contact-form {
-  background: linear-gradient(135deg, #181A20 80%, #23272F 100%);
+  background: white;
   padding: 32px 26px 28px 26px;
   border-radius: 16px;
   box-shadow: 0 6px 32px rgba(16, 23, 42, 0.18);
@@ -989,8 +944,8 @@
   border-radius: 7px;
   font-family: inherit;
   font-size: 1rem;
-  background: #23272F;
-  color: #F3F4F6;
+  background: #ffffff;
+  color: #000000;
   transition: border-color 0.3s ease, background 0.3s;
 }
 
@@ -1030,7 +985,7 @@
   outline: none;
   border-color: #1A9B8E;
   box-shadow: 0 0 8px rgba(26, 155, 142, 0.18);
-  background: #181A20;
+  background: #c4c9d6a7;
 }
 
 .submit-btn {

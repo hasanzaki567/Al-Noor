@@ -1,5 +1,28 @@
 /* ============================================
-   ABOUT PAGE STYLES - AL-NOOR ACADEMY
+   ABOUT.CSS - ABOUT PAGE SPECIFIC STYLES
+   Al Noor Academy
+   ============================================
+   
+   SHARED CLASSES USED (from ../styles/shared.css):
+   - .container          → Section containers (aliased as .about-container here)
+   - .section-title      → Section headings
+   - .btn-primary        → Primary buttons (aliased as .btn-primary-about here)
+   - .btn-secondary      → Secondary buttons (aliased as .btn-secondary-about here)
+   - .badge              → Badge elements (aliased as .section-badge here)
+   - .hero-decoration    → Hero decorative elements
+   
+   PAGE-SPECIFIC CLASSES IN THIS FILE:
+   - .about-page         → Main page wrapper
+   - .about-hero         → Hero section with background
+   - .about-hero-*       → Hero content & overlay
+   - .hero-badge         → Hero section badge
+   - .hero-stats         → Statistics display
+   - .mission-section    → Mission & vision section
+   - .huffaz-section     → Teachers/Huffaz cards
+   - .values-section     → Core values grid
+   - .timeline-section   → Milestones timeline
+   - .cta-section        → Call-to-action section
+   
    ============================================ */
 
 /* Base Styles */

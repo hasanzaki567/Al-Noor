@@ -1,4 +1,5 @@
-import './Contact.css';
+import '../styles/shared.css';  /* Shared styles: .form-group, .success-message, .social-links */
+import './Contact.css';          /* Page-specific: .contact-page, .contact-hero, .contact-form, .contact-info */
 import { useState } from 'react';
 import usePageTitle from "../hooks/usePageTitle";
 
