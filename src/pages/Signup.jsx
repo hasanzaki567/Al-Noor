@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { validateSignupForm, validateEmail, validatePassword, validateName, validateConfirmPassword } from '../services/validation';
 import '../styles/shared.css';  /* Shared styles: .form-group, .error-message, .btn-primary */
 import './Auth.css';             /* Page-specific: .signup-page, .signup-left, .signup-right, .signup-form */
 
@@ -16,11 +17,13 @@ function Signup() {
     country: ''
   });
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { signup } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,57 +32,86 @@ function Signup() {
       [name]: value
     }));
     setError('');
+    
+    // Clear field error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    
+    // Validate on blur
+    let result;
+    switch (name) {
+      case 'name':
+        result = validateName(value, 'Full name');
+        break;
+      case 'email':
+        result = validateEmail(value);
+        break;
+      case 'password':
+        result = validatePassword(value);
+        break;
+      case 'confirmPassword':
+        result = validateConfirmPassword(formData.password, value);
+        break;
+      case 'specialization':
+        if (userType === 'teacher' && !value.trim()) {
+          result = { isValid: false, error: 'Specialization is required for teachers' };
+        } else {
+          result = { isValid: true, error: null };
+        }
+        break;
+      default:
+        result = { isValid: true, error: null };
+    }
+    
+    if (!result.isValid) {
+      setFieldErrors(prev => ({ ...prev, [name]: result.error }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
+    setFieldErrors({});
 
-    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-      setError('Please fill in all required fields');
+    // Validate form
+    const validation = validateSignupForm({ ...formData, userType });
+    
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      setTouched({
+        name: true,
+        email: true,
+        password: true,
+        confirmPassword: true,
+        specialization: true
+      });
       setLoading(false);
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError('Please enter a valid email');
-      setLoading(false);
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
-      setLoading(false);
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      setLoading(false);
-      return;
-    }
-
-    if (userType === 'teacher' && !formData.specialization) {
-      setError('Teachers must specify their specialization');
-      setLoading(false);
-      return;
-    }
-
-    setTimeout(() => {
-      const user = {
+    try {
+      await signup({
         name: formData.name,
         email: formData.email,
-        type: userType,
-        specialization: formData.specialization || 'Student',
+        password: formData.password,
+        userType: userType,
+        specialization: formData.specialization || '',
         institution: formData.institution || 'Al Noor Academy',
-        country: formData.country || '',
-        joinDate: new Date().toLocaleDateString()
-      };
-
-      login(user);
-      setLoading(false);
+        country: formData.country || ''
+      });
       navigate('/profile');
-    }, 600);
+    } catch (error) {
+      setError(error.message || 'Signup failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const countries = [
@@ -137,7 +169,7 @@ function Signup() {
 
             {/* Signup Form */}
             <form onSubmit={handleSubmit} className="signup-form">
-              <div className="signup-field">
+              <div className={`signup-field ${fieldErrors.name && touched.name ? 'has-error' : ''}`}>
                 <label htmlFor="name">Full Name <span className="required">*</span></label>
                 <input
                   type="text"
@@ -145,13 +177,21 @@ function Signup() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Enter Name"
                   disabled={loading}
+                  className={fieldErrors.name && touched.name ? 'input-error' : ''}
                 />
+                {fieldErrors.name && touched.name && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.name}
+                  </span>
+                )}
               </div>
 
               <div className="signup-field">
-                <label htmlFor="country">Country <span className="required">*</span></label>
+                <label htmlFor="country">Country</label>
                 <div className="select-wrapper">
                   <select
                     id="country"
@@ -169,7 +209,7 @@ function Signup() {
                 </div>
               </div>
 
-              <div className="signup-field">
+              <div className={`signup-field ${fieldErrors.email && touched.email ? 'has-error' : ''}`}>
                 <label htmlFor="email">Email <span className="required">*</span></label>
                 <input
                   type="email"
@@ -177,13 +217,21 @@ function Signup() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Enter Email"
                   disabled={loading}
+                  className={fieldErrors.email && touched.email ? 'input-error' : ''}
                 />
+                {fieldErrors.email && touched.email && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.email}
+                  </span>
+                )}
               </div>
 
               {userType === 'teacher' && (
-                <div className="signup-field">
+                <div className={`signup-field ${fieldErrors.specialization && touched.specialization ? 'has-error' : ''}`}>
                   <label htmlFor="specialization">Specialization <span className="required">*</span></label>
                   <input
                     type="text"
@@ -191,9 +239,17 @@ function Signup() {
                     name="specialization"
                     value={formData.specialization}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="e.g., Quranic Studies, Arabic"
                     disabled={loading}
+                    className={fieldErrors.specialization && touched.specialization ? 'input-error' : ''}
                   />
+                  {fieldErrors.specialization && touched.specialization && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.specialization}
+                    </span>
+                  )}
                 </div>
               )}
 
@@ -210,7 +266,7 @@ function Signup() {
                 />
               </div>
 
-              <div className="signup-field">
+              <div className={`signup-field ${fieldErrors.password && touched.password ? 'has-error' : ''}`}>
                 <label htmlFor="password">Password <span className="required">*</span></label>
                 <div className="password-field">
                   <input
@@ -219,8 +275,10 @@ function Signup() {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="Enter Password"
+                    onBlur={handleBlur}
+                    placeholder="Enter Password (min 6 characters)"
                     disabled={loading}
+                    className={fieldErrors.password && touched.password ? 'input-error' : ''}
                   />
                   <button
                     type="button"
@@ -231,9 +289,15 @@ function Signup() {
                     <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                   </button>
                 </div>
+                {fieldErrors.password && touched.password && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.password}
+                  </span>
+                )}
               </div>
 
-              <div className="signup-field">
+              <div className={`signup-field ${fieldErrors.confirmPassword && touched.confirmPassword ? 'has-error' : ''}`}>
                 <label htmlFor="confirmPassword">Confirm Password <span className="required">*</span></label>
                 <div className="password-field">
                   <input
@@ -242,8 +306,10 @@ function Signup() {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Enter Confirm Password"
                     disabled={loading}
+                    className={fieldErrors.confirmPassword && touched.confirmPassword ? 'input-error' : ''}
                   />
                   <button
                     type="button"
@@ -254,6 +320,12 @@ function Signup() {
                     <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                   </button>
                 </div>
+                {fieldErrors.confirmPassword && touched.confirmPassword && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.confirmPassword}
+                  </span>
+                )}
               </div>
 
               <button type="submit" className="signup-submit-btn" disabled={loading}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { validateLoginForm, validateEmail } from '../services/validation';
 import '../styles/shared.css';  /* Shared styles: .form-group, .error-message, .btn-primary */
 import './Auth.css';             /* Page-specific: .auth-page, .auth-left, .auth-right, .auth-form */
 import './Pages.css';            /* Additional dashboard/premium header styles */
@@ -9,6 +10,8 @@ function Login() {
   const [userType, setUserType] = useState('student');
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -21,35 +24,52 @@ function Login() {
       [name]: value
     }));
     setError('');
+    
+    // Clear field error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    
+    // Validate on blur
+    if (name === 'email' && value) {
+      const result = validateEmail(value);
+      if (!result.isValid) {
+        setFieldErrors(prev => ({ ...prev, email: result.error }));
+      }
+    } else if (name === 'password' && !value) {
+      setFieldErrors(prev => ({ ...prev, password: 'Password is required' }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
+    setFieldErrors({});
 
-    if (!formData.email || !formData.password) {
-      setError('Please fill in all fields');
+    // Validate form
+    const validation = validateLoginForm(formData);
+    
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      setTouched({ email: true, password: true });
       setLoading(false);
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError('Please enter a valid email');
-      setLoading(false);
-      return;
-    }
-
-    setTimeout(() => {
-      const user = {
-        email: formData.email,
-        type: userType,
-        name: formData.email.split('@')[0]
-      };
-      
-      login(user); // Use auth context login function
-      setLoading(false);
+    try {
+      await login(formData.email, formData.password, userType);
       navigate('/');
-    }, 600);
+    } catch (error) {
+      setError(error.message || 'Login failed. Please check your credentials.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -166,7 +186,7 @@ function Login() {
 
             {/* Login Form */}
             <form onSubmit={handleSubmit} className="auth-form">
-              <div className="form-group">
+              <div className={`form-group ${fieldErrors.email && touched.email ? 'has-error' : ''}`}>
                 <label htmlFor="email">
                   <i className="fas fa-envelope"></i>
                   Email Address
@@ -178,14 +198,22 @@ function Login() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="your.email@example.com"
                     disabled={loading}
                     autoComplete="email"
+                    className={fieldErrors.email && touched.email ? 'input-error' : ''}
                   />
                 </div>
+                {fieldErrors.email && touched.email && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.email}
+                  </span>
+                )}
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${fieldErrors.password && touched.password ? 'has-error' : ''}`}>
                 <label htmlFor="password">
                   <i className="fas fa-lock"></i>
                   Password
@@ -197,9 +225,11 @@ function Login() {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Enter your password"
                     disabled={loading}
                     autoComplete="current-password"
+                    className={fieldErrors.password && touched.password ? 'input-error' : ''}
                   />
                   <button
                     type="button"
@@ -210,6 +240,12 @@ function Login() {
                     <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                   </button>
                 </div>
+                {fieldErrors.password && touched.password && (
+                  <span className="field-error">
+                    <i className="fas fa-exclamation-circle"></i>
+                    {fieldErrors.password}
+                  </span>
+                )}
               </div>
 
               <div className="form-options">

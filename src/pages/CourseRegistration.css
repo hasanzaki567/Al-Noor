@@ -1,0 +1,506 @@
+.registration-page {
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.registration-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+.registration-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.registration-header h1 {
+  font-size: 2.5rem;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.registration-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Content */
+.registration-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Course Selection */
+.course-selection {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.course-selection h2 {
+  font-size: 1.5rem;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+
+.course-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.course-option {
+  position: relative;
+  display: flex;
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.course-option:hover {
+  border-color: #c9a227;
+  background: #fffdf5;
+}
+
+.course-option.selected {
+  border-color: #c9a227;
+  background: linear-gradient(135deg, #fffdf5 0%, #fff8e7 100%);
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.2);
+}
+
+.course-option input[type="radio"] {
+  display: none;
+}
+
+.course-option-content {
+  flex: 1;
+}
+
+.course-option-content h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.course-option-content p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.course-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-price .price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #c9a227;
+}
+
+.course-price .original-price {
+  font-size: 0.95rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.course-check {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.course-option.selected .course-check {
+  background: #c9a227;
+  color: white;
+}
+
+.course-check i {
+  font-size: 14px;
+}
+
+/* Registration Form Section */
+.registration-form-section {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.registration-form-section h2 {
+  font-size: 1.5rem;
+  color: #1a1a2e;
+  margin-bottom: 25px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group label .required {
+  color: #e74c3c;
+}
+
+.form-group input,
+.form-group select {
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #c9a227;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.1);
+}
+
+.form-group input.input-error,
+.form-group select.input-error {
+  border-color: #e74c3c;
+  background: #fff5f5;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 45px;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #e74c3c;
+}
+
+.field-error i {
+  font-size: 0.8rem;
+}
+
+/* Error Alert */
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #dc2626;
+  margin-bottom: 10px;
+}
+
+.error-alert i {
+  font-size: 1.1rem;
+}
+
+/* Order Summary */
+.order-summary {
+  background: linear-gradient(135deg, #f8f9fa 0%, #f0f4f8 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.order-summary h3 {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.summary-row .strike {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.summary-row.total {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 2px dashed #ddd;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+}
+
+.summary-row.total .price {
+  color: #c9a227;
+  font-size: 1.3rem;
+}
+
+/* Submit Button */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #c9a227 0%, #b8941f 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b8941f 0%, #a68518 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 162, 39, 0.35);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn i {
+  font-size: 1rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Page */
+.registration-success {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+}
+
+.success-icon i {
+  font-size: 50px;
+  color: white;
+}
+
+.registration-success h1 {
+  font-size: 2rem;
+  color: #1a1a2e;
+  margin-bottom: 15px;
+}
+
+.registration-success > p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.registration-success strong {
+  color: #c9a227;
+}
+
+.success-details {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.detail-row .value {
+  color: #1a1a2e;
+}
+
+.status-badge {
+  background: #fef3c7;
+  color: #b45309;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.success-message {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.success-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.success-actions .btn-primary {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #c9a227 0%, #b8941f 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-actions .btn-primary:hover {
+  background: linear-gradient(135deg, #b8941f 0%, #a68518 100%);
+  transform: translateY(-2px);
+}
+
+.success-actions .btn-secondary {
+  padding: 14px 28px;
+  background: white;
+  color: #1a1a2e;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-actions .btn-secondary:hover {
+  border-color: #c9a227;
+  color: #c9a227;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .registration-page {
+    padding: 80px 15px 40px;
+  }
+
+  .registration-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .course-selection,
+  .registration-form-section {
+    padding: 20px;
+  }
+
+  .course-options {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-success {
+    padding: 30px 20px;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .success-actions .btn-primary,
+  .success-actions .btn-secondary {
+    width: 100%;
+  }
+}

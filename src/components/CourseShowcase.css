@@ -207,11 +207,24 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
 .course-card__button:hover {
   background: #cbd116;
   color: #fff;
+}
+
+.course-card__button--primary {
+  background: linear-gradient(135deg, #c9a227 0%, #b8941f 100%);
+  border-color: #c9a227;
+  color: white;
+}
+
+.course-card__button--primary:hover {
+  background: linear-gradient(135deg, #b8941f 0%, #a68518 100%);
+  border-color: #b8941f;
 }
 
 @media (max-width: 768px) {

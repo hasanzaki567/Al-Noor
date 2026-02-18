@@ -91,9 +91,9 @@ function CourseShowcase({ heading = 'Our Cool Courses!', ctaLabel = 'View All Co
                   <span className="course-card__price">{course.price}</span>
                   <span className="course-card__price course-card__price--old">{course.originalPrice}</span>
                 </div>
-                 <button className="course-card__button" type="button">View Course Details</button>
-                <Link to={`/course/${course.id}`} className="course-card__button" aria-label={`View ${course.title}`}>
-                  Purchase Course
+                <Link to={`/course/${course.id}`} className="course-card__button" type="button">View Course Details</Link>
+                <Link to={`/register?course=${course.id}`} className="course-card__button course-card__button--primary" aria-label={`Enroll in ${course.title}`}>
+                  Enroll Now
                 </Link>
               </div>
               

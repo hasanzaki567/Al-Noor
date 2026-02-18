@@ -1,6 +1,7 @@
 import '../styles/shared.css';  /* Shared styles: .container, .section-title, .btn-primary */
 import './Home.css';             /* Page-specific: .home, .hero-section, .features-section, .feature-card */
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import usePageTitle from "../hooks/usePageTitle";
 import './QuranLearning.css';    /* CTA section styles */
 import childImage from '../assets/Screenshot__70_-removebg-preview.png';
@@ -171,7 +172,7 @@ function Home() {
                 </p>
 
                 <div className="cta-buttons">
-                  <button className="btn-primary">Register Now</button>
+                  <Link to="/register" className="btn-primary">Register Now</Link>
                   <button className="btn-secondary">Get Free Trial</button>
                 </div>
               </div>
@@ -392,7 +393,7 @@ function Home() {
               Let us know your learning goals and preferred schedule by filling
               out our simple contact form.
             </p>
-            <button className="journey-btn">Enroll Now</button>
+            <Link to="/register" className="journey-btn">Enroll Now</Link>
           </div>
 
           {/* Step 2 */}
@@ -405,7 +406,7 @@ function Home() {
               Choose a convenient time for your free trial class and get matched
               with a qualified Quran instructor.
             </p>
-            <button className="journey-btn">Enroll Now</button>
+            <Link to="/register" className="journey-btn">Enroll Now</Link>
           </div>
 
           {/* Step 3 */}
@@ -418,7 +419,7 @@ function Home() {
               Start your Quran learning journey with expert instructors and
               structured lessons from day one.
             </p>
-            <button className="journey-btn">Enroll Now</button>
+            <Link to="/register" className="journey-btn">Enroll Now</Link>
           </div>
         </div>
       </section>

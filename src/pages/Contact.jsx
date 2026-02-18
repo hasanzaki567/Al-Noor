@@ -2,6 +2,7 @@ import '../styles/shared.css';  /* Shared styles: .form-group, .success-message,
 import './Contact.css';          /* Page-specific: .contact-page, .contact-hero, .contact-form, .contact-info */
 import { useState } from 'react';
 import usePageTitle from "../hooks/usePageTitle";
+import { validateContactForm, validateEmail, validateName, validateRequired, validateMessage } from '../services/validation';
 
 function Contact() {
   usePageTitle("Contact Us");
@@ -13,6 +14,8 @@ function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,11 +23,55 @@ function Contact() {
       ...prev,
       [name]: value
     }));
+    
+    // Clear field error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: null }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    
+    // Validate on blur
+    let result;
+    switch (name) {
+      case 'name':
+        result = validateName(value);
+        break;
+      case 'email':
+        result = validateEmail(value);
+        break;
+      case 'subject':
+        result = validateRequired(value, 'Subject', { minLength: 3, maxLength: 100 });
+        break;
+      case 'message':
+        result = validateMessage(value);
+        break;
+      default:
+        result = { isValid: true, error: null };
+    }
+    
+    if (!result.isValid) {
+      setFieldErrors(prev => ({ ...prev, [name]: result.error }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate form
+    const validation = validateContactForm(formData);
+    
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      setTouched({ name: true, email: true, subject: true, message: true });
+      return;
+    }
+    
     setIsSubmitting(true);
+    setFieldErrors({});
     
     // Simulate form submission
     setTimeout(() => {
@@ -32,6 +79,7 @@ function Contact() {
       setIsSubmitting(false);
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
+      setTouched({});
       
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
@@ -66,7 +114,7 @@ function Contact() {
               )}
 
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className={`form-group ${fieldErrors.name && touched.name ? 'has-error' : ''}`}>
                   <label htmlFor="name">
                     Name <span className="required">*</span>
                   </label>
@@ -77,11 +125,18 @@ function Contact() {
                     placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
+                    onBlur={handleBlur}
+                    className={fieldErrors.name && touched.name ? 'input-error' : ''}
                   />
+                  {fieldErrors.name && touched.name && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.name}
+                    </span>
+                  )}
                 </div>
 
-                <div className="form-group">
+                <div className={`form-group ${fieldErrors.email && touched.email ? 'has-error' : ''}`}>
                   <label htmlFor="email">
                     Email <span className="required">*</span>
                   </label>
@@ -92,11 +147,18 @@ function Contact() {
                     placeholder="em@gmail.com"
                     value={formData.email}
                     onChange={handleChange}
-                    required
+                    onBlur={handleBlur}
+                    className={fieldErrors.email && touched.email ? 'input-error' : ''}
                   />
+                  {fieldErrors.email && touched.email && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.email}
+                    </span>
+                  )}
                 </div>
 
-                <div className="form-group">
+                <div className={`form-group ${fieldErrors.subject && touched.subject ? 'has-error' : ''}`}>
                   <label htmlFor="subject">
                     Subject <span className="required">*</span>
                   </label>
@@ -107,11 +169,18 @@ function Contact() {
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
+                    onBlur={handleBlur}
+                    className={fieldErrors.subject && touched.subject ? 'input-error' : ''}
                   />
+                  {fieldErrors.subject && touched.subject && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.subject}
+                    </span>
+                  )}
                 </div>
 
-                <div className="form-group">
+                <div className={`form-group ${fieldErrors.message && touched.message ? 'has-error' : ''}`}>
                   <label htmlFor="message">
                     Message <span className="required">*</span>
                   </label>
@@ -119,11 +188,19 @@ function Contact() {
                     id="message"
                     name="message"
                     rows="5"
-                    placeholder="Message"
+                    placeholder="Message (minimum 10 characters)"
                     value={formData.message}
                     onChange={handleChange}
-                    required
+                    onBlur={handleBlur}
+                    className={fieldErrors.message && touched.message ? 'input-error' : ''}
                   ></textarea>
+                  {fieldErrors.message && touched.message && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.message}
+                    </span>
+                  )}
+                  <span className="char-count">{formData.message.length}/2000</span>
                 </div>
 
                 <button 

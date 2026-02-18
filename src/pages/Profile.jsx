@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { validateProfileForm, validateEmail, validateName } from '../services/validation';
 import '../styles/shared.css';  /* Shared styles: .loading-spinner, .tabs, .content-card, .form-group */
 import './Profile.css';          /* Page-specific: .profile-page, .profile-hero, .profile-tabs, .stats-section */
 
@@ -8,6 +9,9 @@ function Profile() {
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const [saveError, setSaveError] = useState('');
   const [activeTab, setActiveTab] = useState('overview');
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -32,12 +36,65 @@ function Profile() {
       ...prev,
       [name]: value
     }));
+    
+    // Clear field error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: null }));
+    }
+    setSaveError('');
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+    
+    // Validate on blur
+    let result;
+    switch (name) {
+      case 'name':
+        result = validateName(value, 'Full name');
+        break;
+      case 'email':
+        result = validateEmail(value);
+        break;
+      case 'specialization':
+        if (user?.type === 'teacher' && !value.trim()) {
+          result = { isValid: false, error: 'Specialization is required for teachers' };
+        } else {
+          result = { isValid: true, error: null };
+        }
+        break;
+      default:
+        result = { isValid: true, error: null };
+    }
+    
+    if (!result.isValid) {
+      setFieldErrors(prev => ({ ...prev, [name]: result.error }));
+    }
   };
 
   const handleSave = () => {
+    // Validate form
+    const validation = validateProfileForm(formData, user?.type);
+    
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      setTouched({ name: true, email: true, specialization: true });
+      return;
+    }
+    
     localStorage.setItem('user', JSON.stringify(formData));
     setUser(formData);
     setIsEditing(false);
+    setFieldErrors({});
+    setTouched({});
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setFormData(user);
+    setFieldErrors({});
+    setTouched({});
   };
 
   const handleLogout = () => {
@@ -259,8 +316,14 @@ function Profile() {
                 
                 {isEditing ? (
                   <div className="edit-form-card">
+                    {saveError && (
+                      <div className="error-alert">
+                        <i className="fas fa-exclamation-circle"></i>
+                        <span>{saveError}</span>
+                      </div>
+                    )}
                     <div className="form-grid">
-                      <div className="form-group">
+                      <div className={`form-group ${fieldErrors.name && touched.name ? 'has-error' : ''}`}>
                         <label htmlFor="name">
                           <i className="fas fa-user"></i>
                           Full Name
@@ -271,11 +334,19 @@ function Profile() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="Enter your full name"
+                          className={fieldErrors.name && touched.name ? 'input-error' : ''}
                         />
+                        {fieldErrors.name && touched.name && (
+                          <span className="field-error">
+                            <i className="fas fa-exclamation-circle"></i>
+                            {fieldErrors.name}
+                          </span>
+                        )}
                       </div>
 
-                      <div className="form-group">
+                      <div className={`form-group ${fieldErrors.email && touched.email ? 'has-error' : ''}`}>
                         <label htmlFor="email">
                           <i className="fas fa-envelope"></i>
                           Email Address
@@ -286,12 +357,20 @@ function Profile() {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="Enter your email"
+                          className={fieldErrors.email && touched.email ? 'input-error' : ''}
                         />
+                        {fieldErrors.email && touched.email && (
+                          <span className="field-error">
+                            <i className="fas fa-exclamation-circle"></i>
+                            {fieldErrors.email}
+                          </span>
+                        )}
                       </div>
 
                       {user.type === 'teacher' && (
-                        <div className="form-group">
+                        <div className={`form-group ${fieldErrors.specialization && touched.specialization ? 'has-error' : ''}`}>
                           <label htmlFor="specialization">
                             <i className="fas fa-graduation-cap"></i>
                             Specialization
@@ -302,8 +381,16 @@ function Profile() {
                             name="specialization"
                             value={formData.specialization || ''}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                             placeholder="Your area of expertise"
+                            className={fieldErrors.specialization && touched.specialization ? 'input-error' : ''}
                           />
+                          {fieldErrors.specialization && touched.specialization && (
+                            <span className="field-error">
+                              <i className="fas fa-exclamation-circle"></i>
+                              {fieldErrors.specialization}
+                            </span>
+                          )}
                         </div>
                       )}
 
@@ -328,7 +415,7 @@ function Profile() {
                         <i className="fas fa-check"></i>
                         Save Changes
                       </button>
-                      <button className="btn-cancel" onClick={() => setIsEditing(false)}>
+                      <button className="btn-cancel" onClick={handleCancelEdit}>
                         <i className="fas fa-times"></i>
                         Cancel
                       </button>

@@ -1,0 +1,132 @@
+// API Service for Al Noor Academy
+// Handles all API calls to the backend server
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+// Helper function to handle API responses
+const handleResponse = async (response) => {
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Something went wrong');
+  }
+  
+  return data;
+};
+
+// API request helper with credentials
+const apiRequest = async (endpoint, options = {}) => {
+  const config = {
+    ...options,
+    credentials: 'include', // Important for session cookies
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  };
+
+  try {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+    return await handleResponse(response);
+  } catch (error) {
+    // Handle network errors (server not running, connection refused, etc.)
+    if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+      throw new Error('Cannot connect to server. Please make sure the server is running.');
+    }
+    throw error;
+  }
+};
+
+// Auth API
+export const authAPI = {
+  // Login user
+  login: async (email, password, userType = 'student') => {
+    return apiRequest('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, userType }),
+    });
+  },
+
+  // Signup user
+  signup: async (userData) => {
+    return apiRequest('/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+  },
+
+  // Logout user
+  logout: async () => {
+    return apiRequest('/auth/logout', {
+      method: 'POST',
+    });
+  },
+
+  // Get current user
+  getCurrentUser: async () => {
+    return apiRequest('/auth/me');
+  },
+
+  // Check authentication status
+  checkAuth: async () => {
+    return apiRequest('/auth/check');
+  },
+
+  // Update profile
+  updateProfile: async (profileData) => {
+    return apiRequest('/auth/profile', {
+      method: 'PUT',
+      body: JSON.stringify(profileData),
+    });
+  },
+
+  // Change password
+  changePassword: async (currentPassword, newPassword) => {
+    return apiRequest('/auth/change-password', {
+      method: 'PUT',
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+  },
+};
+
+// Health check
+export const healthCheck = async () => {
+  return apiRequest('/health');
+};
+
+// Course API
+export const courseAPI = {
+  // Get all courses
+  getAllCourses: async () => {
+    return apiRequest('/courses');
+  },
+
+  // Get single course
+  getCourse: async (courseId) => {
+    return apiRequest(`/courses/${courseId}`);
+  },
+
+  // Register for a course
+  register: async (registrationData) => {
+    return apiRequest('/courses/register', {
+      method: 'POST',
+      body: JSON.stringify(registrationData),
+    });
+  },
+
+  // Get my registrations (requires login)
+  getMyRegistrations: async () => {
+    return apiRequest('/courses/registrations/my');
+  },
+
+  // Get registrations by email
+  getRegistrationsByEmail: async (email) => {
+    return apiRequest(`/courses/registrations/email/${email}`);
+  },
+};
+
+export default {
+  auth: authAPI,
+  courses: courseAPI,
+  healthCheck,
+};
