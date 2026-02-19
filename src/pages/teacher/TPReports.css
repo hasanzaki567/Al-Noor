@@ -1,0 +1,300 @@
+/* ============================================
+   TEACHER PORTAL - REPORTS PAGE
+   ============================================ */
+
+.tpr-page {
+  padding: 32px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.tpr-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 16px;
+  color: #999;
+}
+
+.tpr-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8e8e8;
+  border-top: 3px solid #14B8A6;
+  border-radius: 50%;
+  animation: tpr-spin 0.8s linear infinite;
+}
+
+@keyframes tpr-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.tpr-header {
+  margin-bottom: 24px;
+}
+
+.tpr-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.tpr-header p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Month Navigation */
+.tpr-month-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tpr-nav-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.tpr-nav-btn:hover {
+  background: #14B8A6;
+  color: #fff;
+  border-color: #14B8A6;
+}
+
+.tpr-month-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Overview Cards */
+.tpr-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.tpr-ov-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+}
+
+.tpr-ov-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tpr-ov-icon i {
+  font-size: 1.2rem;
+}
+
+.tpr-ov-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.tpr-ov-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Table Section */
+.tpr-table-section {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  padding: 24px;
+}
+
+.tpr-table-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+}
+
+.tpr-table-wrap {
+  overflow-x: auto;
+}
+
+.tpr-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tpr-table thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tpr-table tbody tr {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.tpr-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tpr-table td {
+  padding: 14px;
+  font-size: 0.9rem;
+}
+
+.tpr-student-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tpr-avatar {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #14B8A6, #0D9488);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.tpr-course-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #e0f7f5;
+  color: #0D9488;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tpr-num {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.tpr-num.present {
+  color: #15803d;
+}
+
+.tpr-num.absent {
+  color: #dc2626;
+}
+
+.tpr-num.late {
+  color: #d97706;
+}
+
+/* Progress Bar */
+.tpr-percentage-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tpr-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.tpr-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.tpr-percentage-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 36px;
+}
+
+/* Empty */
+.tpr-empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: #999;
+}
+
+.tpr-empty i {
+  font-size: 3rem;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.tpr-empty h3 {
+  margin: 0 0 6px;
+  color: #666;
+}
+
+.tpr-empty p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .tpr-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tpr-page {
+    padding: 20px 16px;
+  }
+
+  .tpr-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .tpr-table {
+    min-width: 600px;
+  }
+}

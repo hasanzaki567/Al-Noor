@@ -125,8 +125,107 @@ export const courseAPI = {
   },
 };
 
+// Teacher API
+export const teacherAPI = {
+  // Dashboard
+  getDashboard: async () => {
+    return apiRequest('/teacher/dashboard');
+  },
+
+  // Students
+  getStudents: async () => {
+    return apiRequest('/teacher/students');
+  },
+
+  addStudent: async (studentData) => {
+    return apiRequest('/teacher/students', {
+      method: 'POST',
+      body: JSON.stringify(studentData),
+    });
+  },
+
+  updateStudent: async (id, studentData) => {
+    return apiRequest(`/teacher/students/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(studentData),
+    });
+  },
+
+  deleteStudent: async (id) => {
+    return apiRequest(`/teacher/students/${id}`, {
+      method: 'DELETE',
+    });
+  },
+
+  // Attendance
+  getAttendance: async (params = {}) => {
+    const query = new URLSearchParams(params).toString();
+    return apiRequest(`/teacher/attendance${query ? '?' + query : ''}`);
+  },
+
+  markAttendance: async (attendanceData) => {
+    return apiRequest('/teacher/attendance', {
+      method: 'POST',
+      body: JSON.stringify(attendanceData),
+    });
+  },
+
+  markBulkAttendance: async (date, records) => {
+    return apiRequest('/teacher/attendance/bulk', {
+      method: 'POST',
+      body: JSON.stringify({ date, records }),
+    });
+  },
+
+  // Reports
+  getReports: async (month, year) => {
+    const params = new URLSearchParams();
+    if (month !== undefined) params.append('month', month);
+    if (year !== undefined) params.append('year', year);
+    return apiRequest(`/teacher/reports?${params.toString()}`);
+  },
+
+  // Schedule
+  getSchedule: async (day) => {
+    const query = day ? `?day=${day}` : '';
+    return apiRequest(`/teacher/schedule${query}`);
+  },
+
+  addSchedule: async (scheduleData) => {
+    return apiRequest('/teacher/schedule', {
+      method: 'POST',
+      body: JSON.stringify(scheduleData),
+    });
+  },
+
+  updateSchedule: async (id, scheduleData) => {
+    return apiRequest(`/teacher/schedule/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(scheduleData),
+    });
+  },
+
+  deleteSchedule: async (id) => {
+    return apiRequest(`/teacher/schedule/${id}`, {
+      method: 'DELETE',
+    });
+  },
+
+  // Registrations
+  getRegistrations: async () => {
+    return apiRequest('/teacher/registrations');
+  },
+
+  importRegistration: async (registrationId) => {
+    return apiRequest(`/teacher/import-registration/${registrationId}`, {
+      method: 'POST',
+    });
+  },
+};
+
 export default {
   auth: authAPI,
   courses: courseAPI,
+  teacher: teacherAPI,
   healthCheck,
 };

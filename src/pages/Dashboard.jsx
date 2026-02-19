@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import usePageTitle from "../hooks/usePageTitle";
-import TeacherDashboard from './TeacherDashboard';
 import '../styles/shared.css';  /* Shared styles: .breadcrumb, .tabs, .content-card, .empty-state, .btn-primary */
 import './Dashboard.css';        /* Page-specific: .dashboard-page, .dashboard-hero, .dashboard-tabs, .classes-section */
  import game from '../assets/game.png';
@@ -27,11 +26,6 @@ function Dashboard() {
       navigate('/login');
     }
   }, [isLoggedIn, navigate]);
-
-  // If user is a teacher, render Teacher Dashboard
-  if (userData.type === 'teacher') {
-    return <TeacherDashboard />;
-  }
 
   useEffect(() => {
     const tab = searchParams.get('tab');

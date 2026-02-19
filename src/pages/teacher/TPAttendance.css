@@ -1,0 +1,389 @@
+/* ============================================
+   TEACHER PORTAL - ATTENDANCE PAGE
+   ============================================ */
+
+.tpa-page {
+  padding: 32px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.tpa-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 16px;
+  color: #999;
+}
+
+.tpa-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8e8e8;
+  border-top: 3px solid #14B8A6;
+  border-radius: 50%;
+  animation: tpa-spin 0.8s linear infinite;
+}
+
+@keyframes tpa-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.tpa-header {
+  margin-bottom: 24px;
+}
+
+.tpa-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.tpa-header p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Toolbar */
+.tpa-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tpa-date-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.tpa-date-picker i {
+  color: #14B8A6;
+}
+
+.tpa-date-picker input {
+  border: none;
+  font-size: 0.9rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.tpa-stats-bar {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.tpa-stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tpa-stat.present {
+  color: #15803d;
+}
+
+.tpa-stat.absent {
+  color: #dc2626;
+}
+
+.tpa-stat.total {
+  color: #555;
+}
+
+.tpa-toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.tpa-mark-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1.5px solid #14B8A6;
+  color: #14B8A6;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tpa-mark-all-btn:hover {
+  background: #e0f7f5;
+}
+
+.tpa-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background: #14B8A6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tpa-save-btn:hover:not(:disabled) {
+  background: #0D9488;
+}
+
+.tpa-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tpa-btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: tpa-spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+/* Alerts */
+.tpa-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.tpa-alert.success {
+  background: #e0f7e9;
+  color: #15803d;
+}
+
+.tpa-alert.error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ============================================
+   ATTENDANCE CARDS
+   ============================================ */
+.tpa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+
+.tpa-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  border: 2px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.tpa-card.present {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.tpa-card.absent {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.tpa-card.late {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.tpa-card.excused {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.tpa-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.tpa-student-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tpa-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #14B8A6, #0D9488);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.tpa-student-name {
+  display: block;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+}
+
+.tpa-student-course {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Status Buttons */
+.tpa-status-btns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tpa-status-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #666;
+}
+
+.tpa-status-btn.present:hover,
+.tpa-status-btn.present.active {
+  background: #15803d;
+  color: #fff;
+  border-color: #15803d;
+}
+
+.tpa-status-btn.absent:hover,
+.tpa-status-btn.absent.active {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
+.tpa-status-btn.late:hover,
+.tpa-status-btn.late.active {
+  background: #d97706;
+  color: #fff;
+  border-color: #d97706;
+}
+
+.tpa-status-btn.excused:hover,
+.tpa-status-btn.excused.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+/* Extras */
+.tpa-card-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tpa-card-extras input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tpa-card-extras input:focus {
+  border-color: #14B8A6;
+}
+
+/* Empty */
+.tpa-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.tpa-empty i {
+  font-size: 3rem;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.tpa-empty h3 {
+  margin: 0 0 6px;
+  color: #666;
+}
+
+.tpa-empty p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .tpa-page {
+    padding: 20px 16px;
+  }
+
+  .tpa-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tpa-stats-bar {
+    justify-content: space-around;
+  }
+
+  .tpa-toolbar-actions {
+    justify-content: space-between;
+  }
+
+  .tpa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tpa-status-btns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

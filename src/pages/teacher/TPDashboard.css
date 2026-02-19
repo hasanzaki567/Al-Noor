@@ -1,0 +1,444 @@
+/* ============================================
+   TEACHER PORTAL - DASHBOARD
+   ============================================ */
+
+.tpd-page {
+  padding: 0;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Loading */
+.tpd-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 16px;
+  color: #999;
+}
+
+.tpd-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8e8e8;
+  border-top: 3px solid #14B8A6;
+  border-radius: 50%;
+  animation: tpd-spin 0.8s linear infinite;
+}
+
+@keyframes tpd-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   HERO BANNER - Teal gradient
+   ============================================ */
+.tpd-hero {
+  background: linear-gradient(135deg, #14B8A6 0%, #0D9488 50%, #0F766E 100%);
+  padding: 36px 32px 24px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.tpd-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tpd-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 30%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tpd-hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.tpd-salam {
+  font-size: 0.95rem;
+  margin: 0 0 4px;
+  opacity: 0.9;
+}
+
+.tpd-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tpd-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.tpd-date-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 12px 18px;
+  border-radius: 12px;
+}
+
+.tpd-date-badge i {
+  font-size: 1.3rem;
+}
+
+.tpd-date-badge .tpd-day {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.tpd-date-badge .tpd-date {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Stats Row */
+.tpd-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.tpd-stat-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.tpd-stat-label {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.tpd-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.tpd-section {
+  padding: 24px 32px;
+}
+
+.tpd-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.tpd-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+}
+
+.tpd-section-header .tpd-section-title {
+  margin: 0;
+}
+
+/* Add Button */
+.tpd-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1.5px solid #14B8A6;
+  color: #14B8A6;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tpd-add-btn:hover {
+  background: #14B8A6;
+  color: #fff;
+}
+
+/* ============================================
+   QUICK ACTIONS
+   ============================================ */
+.tpd-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.tpd-action-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.tpd-action-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.tpd-action-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tpd-action-icon i {
+  font-size: 1.2rem;
+}
+
+.tpd-action-info {
+  flex: 1;
+}
+
+.tpd-action-info h4 {
+  margin: 0 0 2px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.tpd-action-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.tpd-action-arrow {
+  color: #ccc;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.tpd-action-card:hover .tpd-action-arrow {
+  transform: translateX(4px);
+  color: #14B8A6;
+}
+
+/* ============================================
+   STUDENTS LIST
+   ============================================ */
+.tpd-students-list {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.tpd-student-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background 0.2s ease;
+}
+
+.tpd-student-row:last-child {
+  border-bottom: none;
+}
+
+.tpd-student-row:hover {
+  background: #fafafa;
+}
+
+.tpd-student-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #14B8A6, #0D9488);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.tpd-student-info {
+  flex: 1;
+}
+
+.tpd-student-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.tpd-student-course {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.tpd-payment-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tpd-payment-badge.paid {
+  background: #e0f7e9;
+  color: #15803d;
+}
+
+.tpd-payment-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.tpd-payment-badge.overdue {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Empty State */
+.tpd-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.tpd-empty i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+.tpd-empty p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   TODAY'S CLASSES
+   ============================================ */
+.tpd-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tpd-class-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 20px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+}
+
+.tpd-class-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #14B8A6;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tpd-class-info h4 {
+  margin: 0 0 2px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.tpd-class-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.tpd-class-student {
+  font-size: 0.8rem;
+  color: #14B8A6;
+  font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .tpd-quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .tpd-hero {
+    padding: 24px 20px 20px;
+  }
+
+  .tpd-hero-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tpd-name {
+    font-size: 1.6rem;
+  }
+
+  .tpd-section {
+    padding: 20px 16px;
+  }
+
+  .tpd-stats-row {
+    grid-template-columns: 1fr;
+  }
+}

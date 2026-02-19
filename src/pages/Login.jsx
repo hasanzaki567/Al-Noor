@@ -63,8 +63,13 @@ function Login() {
     }
 
     try {
-      await login(formData.email, formData.password, userType);
-      navigate('/');
+      const response = await login(formData.email, formData.password, userType);
+      // Redirect teachers to the teacher portal
+      if (userType === 'teacher' || response?.user?.userType === 'teacher') {
+        navigate('/teacher-portal');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       setError(error.message || 'Login failed. Please check your credentials.');
     } finally {

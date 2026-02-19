@@ -12,6 +12,7 @@ require('./config/passport');
 // Import routes
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
+const teacherRoutes = require('./routes/teacher');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -57,6 +58,7 @@ app.use(passport.session());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api/teacher', teacherRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

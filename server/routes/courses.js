@@ -1,6 +1,8 @@
 const express = require('express');
 const Course = require('../models/Course');
 const CourseRegistration = require('../models/CourseRegistration');
+const Student = require('../models/Student');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -154,6 +156,43 @@ router.post('/register', async (req, res) => {
     });
 
     await registration.save();
+
+    // Auto-add student to all teacher lists (find teachers)
+    // Map course name to course type
+    const courseTypeMap = {
+      'Pearls of Juz Amma': 'Hifz',
+      'Young Quranic Gems': 'Tajweed',
+      'Quranic Blossoms': 'Tajweed',
+      'Quranic Guardians': 'Nazra'
+    };
+
+    // Find all teachers and add this student to them
+    try {
+      const teachers = await User.find({ userType: 'teacher', isActive: true });
+      for (const teacher of teachers) {
+        // Check if student already exists for this teacher
+        const existingStudent = await Student.findOne({
+          teacherId: teacher._id,
+          email: email.toLowerCase()
+        });
+
+        if (!existingStudent) {
+          const newStudent = new Student({
+            teacherId: teacher._id,
+            userId: userId || null,
+            name: name.trim(),
+            email: email.toLowerCase(),
+            age: ageNum,
+            course: courseTypeMap[course.title] || 'Nazra',
+            hifzParasCompleted: hifzParasCompleted || 0,
+            monthlyFee: course.price || 0
+          });
+          await newStudent.save();
+        }
+      }
+    } catch (studentErr) {
+      console.error('Auto-add student error (non-blocking):', studentErr);
+    }
 
     res.status(201).json({
       success: true,

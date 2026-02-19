@@ -56,6 +56,14 @@ export default function ProfileDropdown() {
           </div>
 
           <ul className="dropdown-menu">
+            {userData.userType === 'teacher' && (
+              <li>
+                <Link to="/teacher-portal" onClick={() => setOpen(false)}>
+                  <i className="fas fa-chalkboard-teacher"></i>
+                  Teacher Portal
+                </Link>
+              </li>
+            )}
             <li>
               <Link to="/dashboard" onClick={() => setOpen(false)}>
                 <i className="fas fa-th-large"></i>
