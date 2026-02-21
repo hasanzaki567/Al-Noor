@@ -48,6 +48,11 @@ const courseRegistrationSchema = new mongoose.Schema({
     enum: ['pending', 'completed', 'failed', 'refunded'],
     default: 'pending'
   },
+  // Hashed access password for registrant to use for course login (stored hashed)
+  accessPassword: {
+    type: String,
+    default: ''
+  },
   registrationStatus: {
     type: String,
     enum: ['pending', 'approved', 'enrolled', 'completed', 'cancelled'],

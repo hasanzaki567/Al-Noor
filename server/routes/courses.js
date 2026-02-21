@@ -4,6 +4,7 @@ const CourseRegistration = require('../models/CourseRegistration');
 const Student = require('../models/Student');
 const User = require('../models/User');
 
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 // Available courses data (matching frontend)
@@ -100,7 +101,7 @@ router.get('/:courseId', async (req, res) => {
 // @access  Public
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, age, courseId, hifzParasCompleted, userId } = req.body;
+    const { name, email, age, courseId, hifzParasCompleted, userId, password } = req.body;
 
     // Validate required fields
     if (!name || !email || !age || !courseId) {
@@ -141,6 +142,33 @@ router.post('/register', async (req, res) => {
       });
     }
 
+    // Determine access password: use provided password (hashed) or generate temporary one for guests
+    let tempPassword = null;
+    let hashed = '';
+    let returnTempPassword = false;
+
+    if (!userId) {
+      // Guest registration: prefer user-supplied password, otherwise generate temporary password
+      if (password) {
+        if (typeof password !== 'string' || password.length < 6) {
+          return res.status(400).json({ success: false, message: 'Password must be at least 6 characters' });
+        }
+        hashed = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUNDS || '12'));
+      } else {
+        tempPassword = Math.random().toString(36).slice(2, 10); // 8-char temp password
+        hashed = await bcrypt.hash(tempPassword, parseInt(process.env.BCRYPT_SALT_ROUNDS || '12'));
+        returnTempPassword = true;
+      }
+    } else {
+      // Logged-in user: if they provide a password explicitly, hash it and store; otherwise no accessPassword created
+      if (password) {
+        if (typeof password !== 'string' || password.length < 6) {
+          return res.status(400).json({ success: false, message: 'Password must be at least 6 characters' });
+        }
+        hashed = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUNDS || '12'));
+      }
+    }
+
     // Create registration
     const registration = new CourseRegistration({
       userId: userId || null,
@@ -154,6 +182,9 @@ router.post('/register', async (req, res) => {
       paymentStatus: 'pending',
       registrationStatus: 'pending'
     });
+
+    // Store hashed access password (if set)
+    if (hashed) registration.accessPassword = hashed;
 
     await registration.save();
 
@@ -194,6 +225,37 @@ router.post('/register', async (req, res) => {
       console.error('Auto-add student error (non-blocking):', studentErr);
     }
 
+    // For guest registrations with password, create a User account and log them in
+    let newUser = null;
+    if (!userId && (password || tempPassword)) {
+      // Check if User with this email already exists
+      let existingUser = await User.findOne({ email: email.toLowerCase() });
+      if (!existingUser) {
+        // Create a new User account (password already hashed above, but User model hashes on save)
+        const actualPassword = password || tempPassword;
+        existingUser = new User({
+          name: name.trim(),
+          email: email.toLowerCase(),
+          password: actualPassword, // Will be hashed by User model pre-save hook
+          userType: 'student'
+        });
+        await existingUser.save();
+
+        // Link registration to new user
+        registration.userId = existingUser._id;
+        await registration.save();
+      }
+      newUser = existingUser;
+
+      // Log the user in (establish session)
+      await new Promise((resolve, reject) => {
+        req.login(newUser, (err) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
+    }
+
     res.status(201).json({
       success: true,
       message: 'Registration successful! We will contact you shortly.',
@@ -203,8 +265,12 @@ router.post('/register', async (req, res) => {
         name: registration.name,
         email: registration.email,
         amount: registration.amount,
-        status: registration.registrationStatus
-      }
+        status: registration.registrationStatus,
+        // Return the plain temporary password only when server generated it
+        ...(returnTempPassword ? { password: tempPassword } : {})
+      },
+      // Include user data if auto-logged in
+      ...(newUser ? { user: newUser.toJSON() } : {})
     });
   } catch (error) {
     console.error('Course registration error:', error);

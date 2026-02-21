@@ -43,14 +43,15 @@ function CourseRegistration() {
   const [searchParams] = useSearchParams();
   const preselectedCourse = searchParams.get('course');
   const navigate = useNavigate();
-  const { user, isLoggedIn } = useAuth();
+  const { user, isLoggedIn, updateUser } = useAuth();
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     age: '',
     courseId: preselectedCourse || '',
-    hifzParasCompleted: ''
+    hifzParasCompleted: '',
+    password: ''
   });
 
   const [fieldErrors, setFieldErrors] = useState({});
@@ -110,6 +111,17 @@ function CourseRegistration() {
       case 'courseId':
         result = validateRequired(value, 'Course selection');
         break;
+      case 'password':
+        if (!isLoggedIn) {
+          if (!value || value.length < 6) {
+            result = { isValid: false, error: 'Please set a password (min 6 characters)' };
+          } else {
+            result = { isValid: true, error: null };
+          }
+        } else {
+          result = { isValid: true, error: null };
+        }
+        break;
       default:
         result = { isValid: true, error: null };
     }
@@ -137,6 +149,12 @@ function CourseRegistration() {
 
     if (!formData.courseId) {
       errors.courseId = 'Please select a course';
+    }
+    // If user not logged in, password is required for course access
+    if (!isLoggedIn) {
+      if (!formData.password || formData.password.length < 6) {
+        errors.password = 'Please set a password (min 6 characters)';
+      }
     }
 
     return {
@@ -172,11 +190,23 @@ function CourseRegistration() {
         age: parseInt(formData.age),
         courseId: formData.courseId,
         hifzParasCompleted: formData.hifzParasCompleted ? parseInt(formData.hifzParasCompleted) : 0,
-        userId: user?._id || null
+        userId: user?._id || null,
+        password: formData.password || undefined
       });
 
       setSuccess(true);
       setRegistrationData(response.registration);
+
+      // If server returned user data, auto-login and redirect to dashboard
+      if (response.user) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('user', JSON.stringify(response.user));
+        updateUser(response.user);
+        // Redirect to dashboard after short delay so user sees success message
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 2000);
+      }
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.');
     } finally {
@@ -215,9 +245,17 @@ function CourseRegistration() {
             </div>
           </div>
 
-          <p className="success-message">
-            We will contact you shortly with payment details and course access information.
-          </p>
+          {registrationData.password ? (
+            <div className="success-password-note">
+              <h3>Your access password</h3>
+              <p>Please save this password to access the course area:</p>
+              <div className="password-box">{registrationData.password}</div>
+            </div>
+          ) : (
+            <p className="success-message">
+              We will contact you shortly with payment details and course access information.
+            </p>
+          )}
 
           <div className="success-actions">
             <button className="btn-primary" onClick={() => navigate('/courses')}>
@@ -337,6 +375,32 @@ function CourseRegistration() {
                   </span>
                 )}
               </div>
+
+              {/* Password for course access (required for guests) */}
+              {!isLoggedIn && (
+                <div className={`form-group ${fieldErrors.password && touched.password ? 'has-error' : ''}`}>
+                  <label htmlFor="password">
+                    Set a Password for Course Access <span className="required">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Create a password (min 6 chars)"
+                    disabled={loading}
+                    className={fieldErrors.password && touched.password ? 'input-error' : ''}
+                  />
+                  {fieldErrors.password && touched.password && (
+                    <span className="field-error">
+                      <i className="fas fa-exclamation-circle"></i>
+                      {fieldErrors.password}
+                    </span>
+                  )}
+                </div>
+              )}
 
               <div className={`form-group ${fieldErrors.age && touched.age ? 'has-error' : ''}`}>
                 <label htmlFor="age">

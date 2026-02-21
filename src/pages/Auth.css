@@ -433,7 +433,6 @@
   position: absolute;
   right: 14px;
   top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
   color: #9ca3af;
@@ -554,6 +553,7 @@
 }
 
 .auth-page.modern .login-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #cc6d0e 0%, #1A9B8E 100%);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(26, 155, 142, 0.3);
 }
@@ -1946,4 +1946,10 @@
   .signup-form {
     gap: 14px;
   }
+}
+
+.fas:hover {
+  transform: translateY(0px);
+  color: linear-gradient(135deg, #d10000 0%, #14eabf 100%);
+
 }

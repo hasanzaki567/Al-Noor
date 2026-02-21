@@ -97,7 +97,7 @@ function Signup() {
     }
 
     try {
-      await signup({
+      const response = await signup({
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -106,7 +106,12 @@ function Signup() {
         institution: formData.institution || 'Al Noor Academy',
         country: formData.country || ''
       });
-      navigate('/profile');
+      // Redirect to proper dashboard after signup
+      if (userType === 'teacher' || response?.user?.userType === 'teacher') {
+        navigate('/teacher-portal');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (error) {
       setError(error.message || 'Signup failed. Please try again.');
     } finally {

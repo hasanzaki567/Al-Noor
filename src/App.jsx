@@ -11,7 +11,6 @@ import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-import Profile from "./pages/Profile"
 import CourseRegistration from "./pages/CourseRegistration"
 import TeacherPortal from "./pages/teacher/TeacherPortal"
 import TPDashboard from "./pages/teacher/TPDashboard"
@@ -47,7 +46,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<Profile />} />
+          {/* Profile page removed; profile access available from Dashboard */}
           <Route path="/register" element={<CourseRegistration />} />
         </Route>
       </Routes>

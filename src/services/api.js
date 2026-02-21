@@ -223,9 +223,54 @@ export const teacherAPI = {
   },
 };
 
+// Gamification API
+export const gamificationAPI = {
+  // Get student dashboard with progress, badges, challenges
+  getDashboard: async () => {
+    return apiRequest('/gamification/dashboard');
+  },
+
+  // Get leaderboard (type: 'weekly', 'monthly', 'alltime')
+  getLeaderboard: async (type = 'weekly', limit = 10) => {
+    return apiRequest(`/gamification/leaderboard?type=${type}&limit=${limit}`);
+  },
+
+  // Get best student of the month
+  getBestStudent: async () => {
+    return apiRequest('/gamification/best-student');
+  },
+
+  // Get weekly contest data
+  getWeeklyContest: async () => {
+    return apiRequest('/gamification/weekly-contest');
+  },
+
+  // Complete a para
+  completePara: async (paraNumber) => {
+    return apiRequest('/gamification/complete-para', {
+      method: 'POST',
+      body: JSON.stringify({ paraNumber }),
+    });
+  },
+
+  // Complete a challenge
+  completeChallenge: async (challengeId) => {
+    return apiRequest('/gamification/complete-challenge', {
+      method: 'POST',
+      body: JSON.stringify({ challengeId }),
+    });
+  },
+
+  // Get detailed Quran progress
+  getQuranProgress: async () => {
+    return apiRequest('/gamification/quran-progress');
+  },
+};
+
 export default {
   auth: authAPI,
   courses: courseAPI,
   teacher: teacherAPI,
+  gamification: gamificationAPI,
   healthCheck,
 };

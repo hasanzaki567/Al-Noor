@@ -17,6 +17,16 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  const serverBase = import.meta.env.VITE_SERVER_URL || 'http://localhost:5000';
+
+  const handleGoogleSignIn = () => {
+    window.location.href = `${serverBase}/api/auth/google`;
+  };
+
+  const handleAppleSignIn = () => {
+    window.location.href = `${serverBase}/api/auth/apple`;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -68,7 +78,7 @@ function Login() {
       if (userType === 'teacher' || response?.user?.userType === 'teacher') {
         navigate('/teacher-portal');
       } else {
-        navigate('/');
+        navigate('/dashboard');
       }
     } catch (error) {
       setError(error.message || 'Login failed. Please check your credentials.');
@@ -284,11 +294,11 @@ function Login() {
 
             {/* Social Login */}
             <div className="social-login">
-              <button type="button" className="social-btn google" disabled={loading}>
+              <button type="button" className="social-btn google" onClick={handleGoogleSignIn} disabled={loading}>
                 <i className="fab fa-google"></i>
                 Google
               </button>
-              <button type="button" className="social-btn apple" disabled={loading}>
+              <button type="button" className="social-btn apple" onClick={handleAppleSignIn} disabled={loading}>
                 <i className="fab fa-apple"></i>
                 Apple
               </button>
