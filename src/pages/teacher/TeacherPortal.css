@@ -10,6 +10,29 @@
   background: #f5f5f5;
 }
 
+/* ------------------------------------------------------------------
+   FOOTER / LAYOUT ADJUSTMENTS FOR TEACHER PORTAL
+   - Ensure footer does not overlap the fixed sidebar
+   - Add bottom padding to main content so footer sits well below
+   ------------------------------------------------------------------ */
+
+/* add comfortable space at bottom of main content so footer doesn't feel cramped */
+.tp-main {
+  padding-bottom: 140px;
+}
+
+/* offset the footer content to the right to avoid being hidden under the fixed sidebar */
+.tp-layout + .footer {
+  padding-left: 260px;
+}
+
+/* smaller screens: reduced sidebar width */
+@media (max-width: 768px) {
+  .tp-main { padding-bottom: 180px; }
+  .tp-layout + .footer { padding-left: 72px; }
+}
+
+
 /* ============================================
    SIDEBAR
    ============================================ */

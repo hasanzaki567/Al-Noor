@@ -17,7 +17,8 @@ function TPReports() {
     try {
       const res = await teacherAPI.getReports(selectedMonth, selectedYear);
       if (res.success) {
-        setReport(res.report);
+        // backend may return `report` or `reports` depending on server shape
+        setReport(res.report || res.reports || null);
       }
     } catch (error) {
       console.error('Fetch report error:', error);
@@ -79,7 +80,7 @@ function TPReports() {
                 <i className="fas fa-users" style={{ color: '#14B8A6' }}></i>
               </div>
               <div>
-                <span className="tpr-ov-value">{report.totalStudents}</span>
+                <span className="tpr-ov-value">{(report.overview && report.overview.totalStudents) || report.totalStudents || 0}</span>
                 <span className="tpr-ov-label">Total Students</span>
               </div>
             </div>
@@ -89,7 +90,7 @@ function TPReports() {
                 <i className="fas fa-check-circle" style={{ color: '#15803d' }}></i>
               </div>
               <div>
-                <span className="tpr-ov-value">{report.overallAttendance}%</span>
+                <span className="tpr-ov-value">{(report.overview && report.overview.overallAttendance) || report.overallAttendance || 0}%</span>
                 <span className="tpr-ov-label">Attendance Rate</span>
               </div>
             </div>
@@ -99,7 +100,7 @@ function TPReports() {
                 <i className="fas fa-calendar-check" style={{ color: '#15803d' }}></i>
               </div>
               <div>
-                <span className="tpr-ov-value">{report.totalPresent}</span>
+                <span className="tpr-ov-value">{(report.overview && report.overview.totalPresent) || report.totalPresent || 0}</span>
                 <span className="tpr-ov-label">Total Present</span>
               </div>
             </div>
@@ -109,7 +110,7 @@ function TPReports() {
                 <i className="fas fa-times-circle" style={{ color: '#dc2626' }}></i>
               </div>
               <div>
-                <span className="tpr-ov-value">{report.totalAbsent}</span>
+                <span className="tpr-ov-value">{(report.overview && report.overview.totalAbsent) || report.totalAbsent || 0}</span>
                 <span className="tpr-ov-label">Total Absent</span>
               </div>
             </div>
@@ -133,38 +134,54 @@ function TPReports() {
                     </tr>
                   </thead>
                   <tbody>
-                    {report.studentReports.map((sr) => (
-                      <tr key={sr.student._id}>
-                        <td>
-                          <div className="tpr-student-cell">
-                            <div className="tpr-avatar">{sr.student.name.charAt(0).toUpperCase()}</div>
-                            <span>{sr.student.name}</span>
-                          </div>
-                        </td>
-                        <td>
-                          <span className="tpr-course-badge">{sr.student.course}</span>
-                        </td>
-                        <td className="tpr-num present">{sr.attendance.present}</td>
-                        <td className="tpr-num absent">{sr.attendance.absent}</td>
-                        <td className="tpr-num late">{sr.attendance.late}</td>
-                        <td className="tpr-num">{sr.attendance.total}</td>
-                        <td>
-                          <div className="tpr-percentage-cell">
-                            <div className="tpr-progress-bar">
-                              <div
-                                className="tpr-progress-fill"
-                                style={{
-                                  width: `${sr.attendance.percentage}%`,
-                                  background: sr.attendance.percentage >= 75 ? '#15803d' :
-                                    sr.attendance.percentage >= 50 ? '#d97706' : '#dc2626'
-                                }}
-                              ></div>
+                    {report.studentReports.map((sr) => {
+                      // support both shapes: { student: { id|_id, name }, present/absent/... }
+                      const student = sr.student || sr.studentReport || {};
+                      const sid = student._id || student.id || student._id || Math.random();
+                      const name = student.name || student.displayName || 'Student';
+                      const course = student.course || student.courseName || '';
+
+                      // attendance data may be nested in `attendance` or top-level fields
+                      const att = sr.attendance || { present: sr.present || sr.presentCount || 0,
+                        absent: sr.absent || sr.absentCount || 0,
+                        late: sr.late || sr.lateCount || 0,
+                        total: sr.total || sr.totalCount || 0,
+                        percentage: sr.percentage || (sr.total ? Math.round(((sr.present||0)+(sr.late||0))/sr.total*100) : 0)
+                      };
+
+                      return (
+                        <tr key={sid}>
+                          <td>
+                            <div className="tpr-student-cell">
+                              <div className="tpr-avatar">{name.charAt(0).toUpperCase()}</div>
+                              <span>{name}</span>
                             </div>
-                            <span className="tpr-percentage-text">{sr.attendance.percentage}%</span>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td>
+                            <span className="tpr-course-badge">{course}</span>
+                          </td>
+                          <td className="tpr-num present">{att.present}</td>
+                          <td className="tpr-num absent">{att.absent}</td>
+                          <td className="tpr-num late">{att.late}</td>
+                          <td className="tpr-num">{att.total}</td>
+                          <td>
+                            <div className="tpr-percentage-cell">
+                              <div className="tpr-progress-bar">
+                                <div
+                                  className="tpr-progress-fill"
+                                  style={{
+                                    width: `${att.percentage}%`,
+                                    background: att.percentage >= 75 ? '#15803d' :
+                                      att.percentage >= 50 ? '#d97706' : '#dc2626'
+                                  }}
+                                ></div>
+                              </div>
+                              <span className="tpr-percentage-text">{att.percentage}%</span>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               ) : (

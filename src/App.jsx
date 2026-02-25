@@ -18,6 +18,8 @@ import TPStudents from "./pages/teacher/TPStudents"
 import TPAttendance from "./pages/teacher/TPAttendance"
 import TPReports from "./pages/teacher/TPReports"
 import TPSchedule from "./pages/teacher/TPSchedule"
+import AdminLogin from "./pages/admin/AdminLogin"
+import AdminPortal from "./pages/admin/AdminPortal"
 import "./App.css"
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           {/* Profile page removed; profile access available from Dashboard */}
           <Route path="/register" element={<CourseRegistration />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminPortal />} />
         </Route>
       </Routes>
     </Router>

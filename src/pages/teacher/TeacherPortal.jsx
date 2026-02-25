@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import './TeacherPortal.css';
 
 function TeacherPortal() {
@@ -20,7 +22,9 @@ function TeacherPortal() {
   };
 
   return (
-    <div className="tp-layout">
+    <>
+      <Navbar />
+      <div className="tp-layout">
       {/* Sidebar */}
       <aside className={`tp-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         {/* Logo */}
@@ -98,11 +102,13 @@ function TeacherPortal() {
         </div>
       </aside>
 
-      {/* Main Content */}
-      <main className="tp-main">
-        <Outlet />
-      </main>
-    </div>
+        {/* Main Content */}
+        <main className="tp-main">
+          <Outlet />
+        </main>
+      </div>
+      <Footer />
+    </>
   );
 }
 

@@ -327,11 +327,26 @@
   border-radius: 6px;
   font-size: 0.8rem;
   outline: none;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.95);
+  color: #111; /* ensure text is visible */
 }
 
 .tpa-card-extras input:focus {
   border-color: #14B8A6;
+}
+
+/* Improve select/option and textarea visibility across teacher portal */
+.tpa-card-extras textarea,
+.tpa-card-extras select,
+.tpa-card-extras option {
+  color: #111;
+  background: #fff;
+}
+
+/* Make toggle/status buttons more visible in inactive state */
+.tpa-status-btn {
+  color: #333;
+  border-color: #e6e6e6;
 }
 
 /* Empty */

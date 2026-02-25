@@ -4,23 +4,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-// --- OAuth Routes for Google & Apple ---
-// Initiate Google OAuth
-router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-// Google callback
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login', session: true }), (req, res) => {
-  // On success, redirect or send JSON depending on client needs
-  res.redirect(process.env.CLIENT_URL || 'http://localhost:5173');
-});
-
-// Initiate Apple OAuth
-router.get('/apple', passport.authenticate('apple'));
-
-// Apple callback
-router.post('/apple/callback', passport.authenticate('apple', { failureRedirect: '/login', session: true }), (req, res) => {
-  res.redirect(process.env.CLIENT_URL || 'http://localhost:5173');
-});
+// OAuth routes removed (Google & Apple). Use local auth routes instead.
 
 
 // Middleware to check if user is authenticated

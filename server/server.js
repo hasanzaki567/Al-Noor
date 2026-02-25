@@ -5,6 +5,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const passport = require('passport');
+const http = require('http');
+const { Server } = require('socket.io');
 
 // Import passport configuration
 require('./config/passport');
@@ -14,6 +16,7 @@ const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
 const teacherRoutes = require('./routes/teacher');
 const gamificationRoutes = require('./routes/gamification');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -61,6 +64,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/teacher', teacherRoutes);
 app.use('/api/gamification', gamificationRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
@@ -77,8 +81,25 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
+// Create HTTP server and attach Socket.IO for real-time updates
+const httpServer = http.createServer(app);
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    methods: ['GET', 'POST']
+  }
+});
+
+// Make io available on app for route handlers to emit events
+app.set('io', io);
+
+io.on('connection', (socket) => {
+  console.log('Socket connected:', socket.id);
+  socket.on('disconnect', () => { console.log('Socket disconnected:', socket.id); });
+});
+
+httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API available at http://localhost:${PORT}/api`);
 });
